@@ -13,7 +13,7 @@ typedef struct
 
 ///Prototipado
 
-void cargaImagenes (char archivo[],stimagen Imagen[]); /// Archivo de imagen
+void cargaImagenes (char archivo[],stimagen Imagen[]); /// Archivo de imagen y un arreglo de imagenes cargatodas;
 void VerImagen (stimagen imagen);  /// Por parametro la imagen a ver;
 
 
@@ -23,7 +23,21 @@ int main()
     return 0;
 }
 
+///Carga todas las imagenes del archivo,    Loadind Imagenes ....
+void cargaImagenes (char archivo[],stimagen Imagen[])
+{
+FILE* archi=fopen(archivo,"rb");
+int i=0;
+    if(archi)
+    {
+        while(fread(&Imagen[i++],sizeof(stimagen),1,archi)>0)
+        {
+        }
+        fclose(archi);
+    };
+}
 
+/// Muestra 1 imagen
 void VerImagen (stimagen imagen) 
 {
     for (int i = 0; i < imagen.fila; i++) {
