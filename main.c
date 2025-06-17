@@ -44,3 +44,26 @@ void VerImagen (stimagen imagen)
         printf("%s\n", imagen.dibujo[i]);
     }
 }
+
+/// stickman en movimiento
+void dibujarStickman(int pasos) {     /// pasos es la cantidad de espacios a moverse(pasar por parametro)
+    int pie=0;
+
+   for(int i=0;i!=pasos;i++)
+   {
+    espacio(i);printf(" O   \n");espacio(i);printf(" |\\  \n");espacio(i);printf(" /)  \n");
+    usleep(259000);system("cls");                                                          ///tiempo en que fleccione
+    espacio(i);printf(" O   \n");espacio(i);printf("[|-  \n");espacio(i);printf(" |\\  \n");
+    usleep(200000);system("cls");                                                         ///tiempo a que pase de cuadro
+    }
+}
+///adelantamiento de stickman
+void espacio (int movimiento)
+{
+    for(int i=0;i<movimiento;i++)
+    {
+        printf(" ");                   ///Espacio a moverse
+    }
+}
+
+
