@@ -13,56 +13,70 @@ typedef struct
 
 /// CONSTANTES
 const char teclaArriba = 'w', teclaAbajo = 's';
-stImagen nombreJuego;
+stImagen nombreJuego, imagenVacia;
+int variableSonido = 1;
 
 ///PROTOTIPADO
-void inicio(int i);
+int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a);
 void mensaje(int i);
 void cargaImagenes (char archivo[],stImagen imagen[]); /// Archivo de imagen y un arreglo de imagenes cargatodas;
 void verImagen (stImagen imagen);  /// Por parametro la imagen a ver;
-void opcionesInicio(int i);
-void opcionesJuego(int i);
+int opcionesInicio(int i);
 void mensJuego(int i);
 void menuOpciones(int i);
+void reproducirSonido(int i);
+void cambiarSonido();
+
 
 int main()
 {
     char imagenesPepo[] = {"ImagenesEstaticas"};
     stImagen arreglo[30];
+    int menu;
 
     cargaImagenes(imagenesPepo, arreglo);
     nombreJuego = arreglo[0];
-    inicio(0);
+    menu = moverse(0, 4, mensaje, opcionesInicio, nombreJuego);
+
+    printf("retorne %i", menu);
 
 
     return 0;
 }
 
-void inicio(int i)
+int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a)
 {
     char tecla;
+    int num;
 
-    verImagen(nombreJuego);
-    mensaje(i);
+    verImagen(a);
+    funcActual(i);
 
+    fflush(stdin);
     tecla = getch();
+    reproducirSonido (variableSonido);
+
     system("cls");
 
-    if(tecla == 13)
-        opcionesInicio(i);
-    else{
-        if(tecla == teclaAbajo && i<3)
+    if(tecla == 13){
+        num = funcSiguiente(i);
+
+    }else{
+        if(tecla == teclaAbajo && i<opciones-1)
                 i++;
-            else if(tecla == teclaAbajo && i==3)
+            else if(tecla == teclaAbajo && i>opciones-2)
                 i = 0;
             else if(tecla == teclaArriba && i>0)
                 i--;
-            else if(tecla == teclaArriba && i==0)
-                i = 3;
+            else if(tecla == teclaArriba && i<1)
+                i = opciones-1;
 
-        inicio(i);
+
+            moverse(i, opciones, funcActual, funcSiguiente, a);
     }
+    return num;
 }
+
 
 void mensaje(int i)
 {
@@ -111,41 +125,23 @@ void verImagen (stImagen imagen)
     }
 }
 
-void opcionesInicio(int i)
+int opcionesInicio(int i)
 {
-    if(i==0)
-        printf("Comienza el desafio\n\n");
-    else if(i==1)
-        printf("Cargar partida\n\n");
-    else if(i==2)
-        opcionesJuego(0);
+    int algo = 32;
+
+    if(i==0){
+        printf("Retorno 1 para nueva partida\n\n");
+        algo = 1;
+    }else if(i==1){
+        printf("retorno 2 para Cargar partida\n\n");
+        algo = 2;
+    }else if(i==2)
+        moverse(0, 4, mensJuego, menuOpciones, nombreJuego);
     else if(i==3)
         printf("Gracias por jugar, vuelva pronto! \n\n");
-}
 
-void opcionesJuego(int i)
-{
-    char tecla;
+    return algo;
 
-    mensJuego(i);
-
-    tecla = getch();
-    system("cls");
-
-    if(tecla == 13)
-        menuOpciones(i);
-    else{
-        if(tecla == teclaAbajo && i<3)
-                i++;
-            else if(tecla == teclaAbajo && i==3)
-                i = 0;
-            else if(tecla == teclaArriba && i>0)
-                i--;
-            else if(tecla == teclaArriba && i==0)
-                i = 3;
-
-        opcionesJuego(i);
-    }
 }
 
 void mensJuego(int i)
@@ -176,21 +172,49 @@ void mensJuego(int i)
 void menuOpciones(int i)
 {
         if(i==0){
-        printf("Paraaaaaa, iba a tener sonido jaja\n\n");
-        system("pause");
+        cambiarSonido();
         system("cls");
-        opcionesJuego(i);
+        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
     }else if(i==1){
-        printf("Graficos:\n     Pestanear siempre: Activo\n\n");
+        printf("Graficos:\n     Parpadear siempre: Activo\n\n");
         system("pause");
         system("cls");
-        opcionesJuego(i);
+        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
     }else if(i==2){
         printf("Idioma:\n       Espaninglish: siempre\n\n");
         system("pause");
         system("cls");
-        opcionesJuego(i);
+        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
     }else if(i==3){
-        inicio(2);
+        moverse(2, 4, mensaje, opcionesInicio, nombreJuego);
     }
+}
+
+void reproducirSonido(int i)
+{
+    if(i == 1)
+        Beep(400, 170);
+}
+
+void cambiarSonido()
+{
+    char tecla;
+    do{
+
+        if(variableSonido == 0){
+            printf("\n\n\n\n                                            Sonido de tecla: Activado\n\n");
+            tecla = getch();
+            variableSonido = 1;
+            reproducirSonido(variableSonido);
+            system("cls");
+
+        }else{
+            printf("\n\n\n\n                                            Sonido de tecla: Desactivado\n\n");
+            tecla = getch();
+            reproducirSonido(variableSonido);
+            variableSonido = 0;
+            system("cls");
+        }
+    }while(tecla != 13);
+
 }
