@@ -60,6 +60,8 @@ int main()
                 printf("Pedir nombre, pedir edad, poner estadisticar\n\n");
                 printf("Se guarda el personaje\n\n");
 
+                system("pause");
+                system("cls");
 
                 menu=3;
 
@@ -74,24 +76,34 @@ int main()
                 printf("Aca se cargo la partida\n");
                 printf("Aca se muestra el personaje guardado\n\n");
 
+                system("pause");
+                system("cls");
                 menu=3;
 
                 break;
             }
         case 3:
             {
-
+                int aux;
+                verImagen(arreglo[10]);
                 printf("se va a el pasillo\n");
                 printf("Poner  donde vamos \n");
                 printf("4 makano  5 carmelia cantuccini    6 ana maria Rosa  7 beretche \n\n");
-                scanf("%i",&menu);
+                scanf("%i",&aux);
+                if(aux<8 && aux>3)
+                {
+                    menu=aux;
+                }
+
+
+
                 system("pause");
                 system("cls");
                 break;
             }
         case 4:
             {
-
+                verImagen(arreglo[12]);
                 printf("en lo de makano\n");
                 printf("completaste el desafio\n");
                 system("pause");
@@ -127,7 +139,9 @@ int main()
 
                 printf("en lo beretcher\n");
 
-                printf("ganaste??   9:si 2:no  \n");
+                printf("ganaste??  \n");
+                system("pause");
+                system("cls");
                 scanf("%i",&menu);
 
                 break;
