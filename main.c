@@ -11,6 +11,16 @@ typedef struct
     int fila;                    /// Variable para imprimir la cant de filas justas;
 }stImagen;
 
+typedef struct
+{
+    int inteligencia;
+    int habcarisma;
+    int habcheat;
+    char nombre [20];
+    char dibujo [12][100];
+
+} stpersonaje;
+
 /// CONSTANTES
 const char teclaArriba = 'w', teclaAbajo = 's';
 stImagen nombreJuego, imagenVacia;
@@ -33,6 +43,7 @@ int main()
     char imagenesPepo[] = {"ImagenesEstaticas"};
     stImagen arreglo[30];
     int menu;
+    int pj;
 
     cargaImagenes(imagenesPepo, arreglo);
     nombreJuego = arreglo[0];
@@ -48,11 +59,12 @@ int main()
                 Textoinicia(arreglo);
                 system("pause");
                 system("cls");
+
                 ///--------aca menu con arreglo[3],arreglo[4],arreglo[5],arreglo[6]-------
-                verImagen(arreglo[2]);
-                verImagen(arreglo[3]);
-                verImagen(arreglo[4]);
-                verImagen(arreglo[5]);
+
+                pj=4+seleccion(0,4,arreglo);
+                printf("pj %i\n",pj);
+                verImagen(arreglo[pj]);
                 system("pause");
                 system("cls");
 
@@ -470,49 +482,41 @@ int EjercicioMate2 (stImagen imagen)
      if(num==23)
      {
          return 2;
-         
+
      }
-     
+
      return 0;
 }
 
 
-int EjercicioMate3 (stImagen imagen)
+int seleccion(int i, int opciones, stImagen a[])
 {
-    int num;
-   do
-    { 
-        printf("El ejercicio 3 esta dificil te pones nervioso \n");
-        printf("La profe no te presta atencion y el ayudante se durmio\n");
-        printf("Con que habilidad deseas resolver el ejercicio\n");
-        printf(" 1:Inteligencia  2:Carisma 3:Trampa \n");
-        fflush(stdin);
-        scanf("%i",&num
-              if(num==1)
-              {
-                  if (habilidad de pj )
-              }
-              if(num==2)
-              {
-                  printf("Le hablas al ayudante,pero...esta dormido no te oye y fallas\n");
-                  return 0
-              }
-              if(num==3)
-              {
-                  printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
-                  if(habilidad de personaje > 6)
-                  {
-                      printf("Tu habilidad para saltarte las reglas te permiten safas el ejercicio\n");
-                      return 1;
-                  }
-                  else 
-                  {
-                      printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
-                      printf("Dejas el ejercicio incompleto\n");
-                      return 0;
-                  }
-                  
-              }
-    }while(num>3 || num<1);
+    char tecla;
+    int pj;
 
+    verImagen(a[i+2]);
+
+    fflush(stdin);
+    tecla = getch();
+    reproducirSonido (variableSonido);
+
+    system("cls");
+
+    if(tecla == 13){
+        pj = i+2;
+
+    }else{
+        if(tecla == teclaAbajo && i<opciones-1)
+                i++;
+            else if(tecla == teclaAbajo && i>opciones-2)
+                i = 0;
+            else if(tecla == teclaArriba && i>0)
+                i--;
+            else if(tecla == teclaArriba && i<1)
+                i = opciones-1;
+
+
+            pj=seleccion(i, opciones, a);
+    }
+    return pj;
 }
