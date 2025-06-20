@@ -786,7 +786,7 @@ int pregunta4 (stpersonaje a [], stprofesor p [])
 
         /// printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS \033[0m");
 
-        printf("\n\n Quieres cambiar la respuesta ?.. El profesor esta distraido..... ");
+        printf("\n\n  El profesor esta distraido.....Tienes una chances mas de cambiar la respuesta, apurate dale ? s/n... ");
 
         scanf(" %c",&mmm);
         if(mmm=='n')
