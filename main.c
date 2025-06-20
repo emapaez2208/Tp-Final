@@ -14,8 +14,8 @@ typedef struct
 typedef struct
 {
     int inteligencia;
-    int habcarisma;
-    int habcheat;
+    int carisma;
+    int cheat;
     char nombre[20];
     char dibujo[14][100];        /// Retrato de pj
     int fila;                    /// Filas de imagen del retratro
@@ -37,6 +37,7 @@ void mensJuego(int i);
 void menuOpciones(int i);
 void reproducirSonido(int i);
 void cambiarSonido();
+stpersonaje LoadPj (char archivo[]);
 
 int seleccion(int i, int opciones, stImagen a[]);       ///Seleccion de pj
 stpersonaje fotopj (stImagen imagen);                   /// Copia imagen del pj Seleccionado en la struct de pj.
@@ -46,6 +47,7 @@ int main()
     ///Variables
 
     char imagenesPepo[] = {"ImagenesEstaticas"};
+    char LoadSavePj []  = {"Partida"};
     stImagen arreglo[30];
     stpersonaje Personaje1;
     char nombrePj[20];
@@ -74,16 +76,19 @@ int main()
                 printf("Ingrese su nombre: ");
                 gets(&nombrePj);
                 strcpy(Personaje1.nombre,nombrePj);
-                system("pause");
                 system("cls");
 
                 verImagenPJ(Personaje1);
                 printf("Hola %s\n",Personaje1.nombre);
-
+                system("pause");
+                system("cls");
                 printf("Ahora vamos a cargar tus habilidades!!!!\n");
+                Personaje1.inteligencia=3;
+                Personaje1.carisma=3;
+                Personaje1.cheat=3;
 
                 ///Se guarda el personaje
-
+                VerPersonaje(Personaje1);
                 system("pause");
                 system("cls");
 
@@ -93,9 +98,11 @@ int main()
             }
         case 2:
             {
-
-                printf("Aca se cargo la partida\n");
-                printf("Aca se muestra el personaje guardado\n\n");
+                Personaje1=LoadPj(LoadSavePj);
+                printf("\n\n\n\n\n\n\n\n                                                 Loading......\n");
+                usleep(500000);
+                system("cls");
+                VerPersonaje(Personaje1);
 
                 system("pause");
                 system("cls");
@@ -112,7 +119,7 @@ int main()
                 printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              11:Salir          ELEGIR :");
                 scanf("%i",&aux);
 
-                if(aux<8 && aux>3)
+                if(aux<9 && aux>3 || aux == 11)
                 {
                     menu=aux;
                 }
@@ -175,7 +182,11 @@ int main()
             }
         case 8:
             {
+                printf("\n\n\n\n\n\n\n\n                                            Guardando......\n");
+                usleep(500000);
+                savePj(LoadSavePj,Personaje1);
 
+                menu=3;
                 break;
             }
         case 9:
@@ -184,6 +195,16 @@ int main()
                 system("pause");
                 system("cls");
                 menu=11;
+                break;
+            }
+        case 10:
+            {
+
+                break;
+            }
+        case 11:
+            {
+
                 break;
             }
         default:
@@ -587,5 +608,42 @@ stpersonaje fotopj (stImagen imagen)
     personaje.fila=imagen.fila;
 
     return personaje;
+}
+
+void VerPersonaje (stpersonaje a)
+{
+
+    puts("\033[34m \n=======================================");
+    verImagenPJ(a);
+    printf("       Nombre :  %s\n",a.nombre);
+    printf("\n  Habilidades :");
+    printf("\n              Inteligencia :  %i",a.inteligencia);
+    printf("\n                   Carisma :  %i",a.carisma);
+    printf("\n                     Cheat :  %i",a.cheat);
+    puts("\n=======================================");
+    printf("\033[0m");
+
+}
+
+void savePj (char archivo[],stpersonaje pj)
+{
+    FILE*archi =fopen(archivo,"wb");
+
+    fwrite(&pj,sizeof(stpersonaje),1,archi);
+
+    fclose(archi);
+}
+
+stpersonaje LoadPj (char archivo[])
+{
+    stpersonaje pj;
+
+    FILE*archi =fopen(archivo,"rb");
+
+    fread(&pj,sizeof(stpersonaje),1,archi);
+
+    fclose(archi);
+
+    return pj;
 }
 
