@@ -237,7 +237,14 @@ void resultado (stprofesor p [],stpersonaje a [])
     printf("\nInteligencia.........2");
     printf("\nCheat................3.......");
 
+    do{
+
     scanf("%i",&elegir);
+    if(3<elegir || elegir<1){
+
+        printf("\n opcion incorrecta , vuelva a elegir .....");
+    }
+    }while(elegir!=1 && elegir !=2 && elegir!=3);
     if(elegir==1){
     if( p[i].Personalidad > a[ii].habcarisma)
     {
@@ -610,7 +617,7 @@ int pregunta3 (stpersonaje a[], stprofesor p [])
     printf("\n  Se envia a  BLOQUEADOS:......b");
     printf("\n            Queda en CPU: .....c");
     printf("\n Ninguna de las anteriores:....d.........\033[0m");
-   
+
 
 
      do{
@@ -743,7 +750,7 @@ int pregunta4 (stpersonaje a [], stprofesor p [])
     printf("\n Que hay un proceso bloqueado:...........a");
     printf("\n No hay ningun proceso bloqueado:........b");
     printf("\n Que hay al menos un proceso bloqueado:..c.........\033[0m");
-  
+
 
     do{
     if(mmm=='s')
