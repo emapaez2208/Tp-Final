@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -215,7 +214,7 @@ void mostrarProfe (stprofesor p [])
     printf("\n dificultad del parcial :  %i",p[i].dificultadParcial);
 
 }
-/// Aca empieza el aula del prefesor
+
 void resultado (stprofesor p [],stpersonaje a [])
 {
 
@@ -479,10 +478,8 @@ int pregunta2 (stpersonaje a [], stprofesor p [])
     printf("\n\n\n\033[32m Pregunta 2:");
     printf("\n Un semaforo evita que un proceso realice una espera activa en la memoria de disco mientras llega su turno de ejecucion ");
     printf("\n Verdadero = [v]");
-    printf("\n     Falso = [f]........");
+    printf("\n     Falso = [f]........\033[0m");
     fflush(stdin);
-    scanf(" %c",&opcion);
-    printf("\n................\033[0m",opcion);
 
      do{
     if(mmm=='s')
@@ -612,9 +609,8 @@ int pregunta3 (stpersonaje a[], stprofesor p [])
     printf("\n      Se envia a LISTOS :......a");
     printf("\n  Se envia a  BLOQUEADOS:......b");
     printf("\n            Queda en CPU: .....c");
-    printf("\n Ninguna de las anteriores:....d.........");
-    scanf(" %c",&letra);
-    printf("\n................\033[0m",letra);
+    printf("\n Ninguna de las anteriores:....d.........\033[0m");
+   
 
 
      do{
@@ -746,9 +742,8 @@ int pregunta4 (stpersonaje a [], stprofesor p [])
     printf("\n Dado el valor del semaforo con contador = -1 puedo afirmar que :  ");
     printf("\n Que hay un proceso bloqueado:...........a");
     printf("\n No hay ningun proceso bloqueado:........b");
-    printf("\n Que hay al menos un proceso bloqueado:..c.........");
-    scanf(" %c",&letra);
-    printf("\n................\033[0m",letra);
+    printf("\n Que hay al menos un proceso bloqueado:..c.........\033[0m");
+  
 
     do{
     if(mmm=='s')
