@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include "Pila.h"
 
 typedef struct
 {
@@ -438,7 +439,7 @@ int EjercicioMate1(stImagen imagen)
         verImagen(imagen);
         printf("\n");
         printf("Resolver: x^2+0=4  el valor de x es \n");
-        printf("1:x=1;x=2  2:x=2 3:x=-1;x=2\n\n");
+        printf("1:x=1;x=2  2:x=2;x=-2 3:x=-1;x=2\n\n");
         printf("RTA: ");
         fflush(stdin);
         scanf("%i",&rta);
