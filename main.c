@@ -13,36 +13,38 @@ typedef struct
 
 typedef struct
 {
-    int inteligencia;
+    int inteligencia;           /// habilidades
     int habcarisma;
     int habcheat;
     char nombre[20];
     char dibujo[14][100];        /// Retrato de pj
     int fila;                    /// Filas de imagen del retratro
-    int nivelAYSO;
+    int nivelAYSO;              /// control de ganarle a los profes
     int nivelOrga;
     int nivelMate;
 
 } stpersonaje;
 
-/// CONSTANTES
-const char teclaArriba = 'w', teclaAbajo = 's';
+/// CONSTANTES Y VARIABLES GLOBALES
+const char teclaArriba = 'w', teclaAbajo = 's', teclaDerecha = 'd', teclaIzquierda = 'a';
 stImagen nombreJuego, imagenVacia;
 int variableSonido = 1;
 
 ///PROTOTIPADO
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a);
-void mensaje(int i);
-void cargaImagenes (char archivo[],stImagen imagen[]);  /// Archivo de imagen y un arreglo de imagenes cargatodas;
-void verImagen (stImagen imagen);                       /// Por parametro la imagen a ver;
+void mensajeInicial(int i);
+void cargaImagenes (char archivo[],stImagen imagen[]);
+void verImagen (stImagen imagen);
 int opcionesInicio(int i);
-void mensJuego(int i);
+void mensajeOpciones(int i);
 void menuOpciones(int i);
 void reproducirSonido(int i);
 void cambiarSonido();
+void textoInicial(stImagen imagenes[]);
+void introMate (stImagen imagen);
 
-int seleccion(int i, int opciones, stImagen a[]);       ///Seleccion de pj
-stpersonaje fotopj (stImagen imagen);                   /// Copia imagen del pj Seleccionado en la struct de pj.
+int seleccion(int i, int opciones, stImagen a[]);
+stpersonaje fotopj (stImagen imagen);
 
 
 void guardarPartida(char archivo[], stpersonaje a);
@@ -53,21 +55,19 @@ int menuCargaPartida(stpersonaje pj, int i);
 
 int main()
 {
-    ///Variables
+    /// Variables
 
     char imagenesPepo[] = {"ImagenesEstaticas"};
     char archivoPartidas[] = {"PartidasGuardadas"};
     stImagen arreglo[30];
     stpersonaje Personaje1;
     char nombrePj[20];
-    int menu;
+    int menu = 0;
     int pj;
     int cargaExitosa;
 
-
     cargaImagenes(imagenesPepo, arreglo);
     nombreJuego = arreglo[0];
-    menu = moverse(0, 4, mensaje, opcionesInicio, nombreJuego);
 
     do
     {
@@ -76,13 +76,13 @@ int main()
         {
         case 0:
 
-            menu = moverse(0, 4, mensaje, opcionesInicio, nombreJuego);
+            menu = moverse(0, 4, mensajeInicial, opcionesInicio, nombreJuego);
             break;
 
 
         case 1:
             {
-                Textoinicia(arreglo);
+                textoInicial(arreglo);
                 system("pause");
                 system("cls");
 
@@ -132,10 +132,10 @@ int main()
                 int aux;
                 printf("                  Ingresaste   al    pasillo!!!!!! \n");
                 verImagen(arreglo[10]);
-                printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              11:Salir          ELEGIR :");
+                printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              0:Salir          ELEGIR :");
                 scanf("%i",&aux);
 
-                if(aux<9 && aux>3)
+                if((aux<9 && aux>3) || aux == 0)
                 {
                     menu=aux;
                 }
@@ -170,7 +170,7 @@ int main()
 
                 if (1)
                 {
-                    IntroMate(arreglo[13]);
+                    introMate(arreglo[13]);
                     system("pause");system("cls");
 
                     EjercicioMate1(arreglo[13]);
@@ -219,31 +219,31 @@ int main()
 
         }
 
-    }while(menu!=11);
+    }while(menu!=777);
 
 
     return 0;
 }
-
+/// funcion para moverse por los menus
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a)
 {
     char tecla;
     int num;
 
     verImagen(a);
-    funcActual(i);
+    funcActual(i);  /// mostramos una imagen y en donde estamos ubicados
 
     fflush(stdin);
-    tecla = getch();
+    tecla = getch();  /// leemos la tecla, reproducimos sonido si esta activado
     reproducirSonido (variableSonido);
 
     system("cls");
 
     if(tecla == 13){
-        num = funcSiguiente(i);
+        num = funcSiguiente(i);     /// si preciona enter pasamos a la siguiente mandando el valor actual de i
 
     }else{
-        if(tecla == teclaAbajo && i<opciones-1)
+        if(tecla == teclaAbajo && i<opciones-1)       /// dependiendo de que tecla se use le damos el valor a i
                 i++;
             else if(tecla == teclaAbajo && i>opciones-2)
                 i = 0;
@@ -253,13 +253,13 @@ int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImage
                 i = opciones-1;
 
 
-            num=moverse(i, opciones, funcActual, funcSiguiente, a);
+            num = moverse(i, opciones, funcActual, funcSiguiente, a);   /// llamada recursiva a la funcion
     }
-    return num;
+    return num;     /// retornamos un numero para algunas funciones
 }
 
-
-void mensaje(int i)
+/// funcion para mostrar el inicio segun el valor de i
+void mensajeInicial(int i)
 {
     if(i==0){
         printf("                                                --> Nueva partida\n");
@@ -305,13 +305,14 @@ void verImagen (stImagen imagen)
         printf("%s\n", imagen.dibujo[i]);
     }
 }
-
+/// muestra el dibujo del personaje pasado por parametro
 void verImagenPJ (stpersonaje imagen)
 {
     for (int i = 0; i < imagen.fila; i++) {
         printf("%s\n", imagen.dibujo[i]);
     }
 }
+/// funcion para retornar un valor dependiendo de donde se este ubicado con i , esto se usa para los case en el switch partiendo del menu principal
 int opcionesInicio(int i)
 {
     if(i==0){
@@ -319,13 +320,17 @@ int opcionesInicio(int i)
     }else if(i==1){
         return 2;
     }else if(i==2)
-        moverse(0, 4, mensJuego, menuOpciones, nombreJuego);
-    else if(i==3)
-        printf("Gracias por jugar, vuelva pronto! \n\n");
+        moverse(0, 4, mensajeOpciones, menuOpciones, nombreJuego);
+    else if(i==3){
+        verImagen(nombreJuego);
+        printf("\n\n                                    Gracias por jugar, vuelva pronto! \n\n");
+        system("pause");
+        return 777;
+    }
 
 }
-
-void mensJuego(int i)
+/// funcion para mostrar el menu de opciones dependiendo del valor de i
+void mensajeOpciones(int i)
 {
     if(i==0){
         printf("                                                --> Sonido\n");
@@ -349,34 +354,34 @@ void mensJuego(int i)
         printf("                                                --> Volver\n");
     }
 }
-
+/// dependiendo del valor de i cuando se ingresa enter, es a donde mandamos al usuario. funcion para el mensaje anterior
 void menuOpciones(int i)
 {
         if(i==0){
         cambiarSonido();
         system("cls");
-        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
+        moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
     }else if(i==1){
         printf("Graficos:\n     Parpadear siempre: Activo\n\n");
         system("pause");
         system("cls");
-        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
+        moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
     }else if(i==2){
         printf("Idioma:\n       Espaninglish: siempre\n\n");
         system("pause");
         system("cls");
-        moverse(i, 4, mensJuego, menuOpciones, nombreJuego);
+        moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
     }else if(i==3){
-        moverse(2, 4, mensaje, opcionesInicio, nombreJuego);
+        moverse(2, 4, mensajeInicial, opcionesInicio, nombreJuego);
     }
 }
-
+/// funcion para reproducir sonido de tecla
 void reproducirSonido(int i)
 {
     if(i == 1)
         Beep(400, 170);
 }
-
+/// funcion para cambiar el sonido de tecla, activado o desactivado
 void cambiarSonido()
 {
     char tecla;
@@ -399,7 +404,8 @@ void cambiarSonido()
     }while(tecla != 13);
 
 }
-void Textoinicia(stImagen imagenes[])
+/// comienzo de partida nueva
+void textoInicial(stImagen imagenes[])
 {
     printf(" !Introduccion al Juego: Vida Universitaria: UTN !\n");
     verImagen(imagenes[1]);
@@ -411,8 +417,8 @@ void Textoinicia(stImagen imagenes[])
     printf("La aventura comienza ahora!!!\n\n\n");
 }
 
-
-void IntroMate (stImagen imagen)
+/// funcion inicio de enfrentamiento matematicas
+void introMate (stImagen imagen)
 {
     printf("                              Bienvenido a Matematica !!!!!\n");
     verImagen(imagen);
@@ -420,6 +426,7 @@ void IntroMate (stImagen imagen)
     printf("Que dios te ayude!!\n");
 }
 
+/// primer ejercicio a resolver matematicas
 int EjercicioMate1(stImagen imagen)
 {
 
@@ -431,7 +438,7 @@ int EjercicioMate1(stImagen imagen)
         verImagen(imagen);
         printf("\n");
         printf("Resolver: x^2+0=4  el valor de x es \n");
-        printf("1:x=1;x=2  2:x=-2;x=2 3:x=-1;x=2\n\n");
+        printf("1:x=1;x=2  2:x=2 3:x=-1;x=2\n\n");
         printf("RTA: ");
         fflush(stdin);
         scanf("%i",&rta);
@@ -446,7 +453,7 @@ int EjercicioMate1(stImagen imagen)
     printf("Rta incorrecta");
     return 0;
 }
-
+/// segundo ejercicio matematicas
 int EjercicioMate2 (stImagen imagen)
 {
     int num;
@@ -462,7 +469,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("|  5  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -470,7 +477,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| +6  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -478,7 +485,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| +9  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -486,7 +493,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| -2  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -494,7 +501,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| -4  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -502,7 +509,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| +3  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -510,7 +517,7 @@ int EjercicioMate2 (stImagen imagen)
     printf("|     |\n");
     printf("| +6  |\n");
     printf("|_____|\n");
-    usleep(500000);
+    usleep(700000);
     system("cls");
 
     verImagen(imagen);
@@ -570,6 +577,8 @@ int EjercicioMate3 (stImagen imagen)
 
 }
 */
+
+/// seleccion de personaje
 int seleccion(int i, int opciones, stImagen a[])
 {
     char tecla;
@@ -588,13 +597,13 @@ int seleccion(int i, int opciones, stImagen a[])
         pj = i+2;
 
     }else{
-        if(tecla == teclaAbajo && i<opciones-1)
+        if((tecla == teclaAbajo || tecla == teclaDerecha) && i<opciones-1)
                 i++;
-            else if(tecla == teclaAbajo && i>opciones-2)
+            else if((tecla == teclaAbajo || tecla == teclaDerecha) && i>opciones-2)
                 i = 0;
-            else if(tecla == teclaArriba && i>0)
+            else if((tecla == teclaArriba || tecla == teclaIzquierda) && i>0)
                 i--;
-            else if(tecla == teclaArriba && i<1)
+            else if((tecla == teclaArriba || tecla == teclaIzquierda) && i<1)
                 i = opciones-1;
 
 
@@ -602,7 +611,7 @@ int seleccion(int i, int opciones, stImagen a[])
     }
     return pj;
 }
-
+/// copiamos el personaje elegido y lo guardamos en la estructura del personaje
 stpersonaje fotopj (stImagen imagen)
 {
     stpersonaje personaje;
@@ -615,7 +624,7 @@ stpersonaje fotopj (stImagen imagen)
 
     return personaje;
 }
-
+/// guardar partida
 void guardarPartida(char archivo[], stpersonaje a)
 {
     FILE* buffer = fopen(archivo, "wb");
@@ -635,6 +644,7 @@ void guardarPartida(char archivo[], stpersonaje a)
 
 }
 
+/// cargar la partida desde el archivo
 stpersonaje cargarPartida(char archivo[])
 {
     FILE* buffer = fopen(archivo, "rb");
@@ -648,22 +658,23 @@ stpersonaje cargarPartida(char archivo[])
     }
     return pj;
 }
-
+/// funcion para mostrar la carga de partida
 void imagenCargaPartida(stpersonaje pj)
 {
     verImagen(nombreJuego);
 
     printf("\n\n                                                Ultima partida\n\n");
-    printf("                          -----------------------------------------------------------------------\n");
+    printf("-----------------------------------------------------------------------\n");
+    verImagenPJ(pj);
     printf("                           Nombre: %s                                                            \n", pj.nombre);
     printf("                           Habilidades:                                                          \n");
     printf("                                  Inteligencia: %i                                               \n", pj.inteligencia);
     printf("                                       Carisma: %i                                               \n", pj.habcarisma);
     printf("                                         Cheat: %i                                               \n", pj.habcheat);
-    printf("                          -----------------------------------------------------------------------\n\n\n");
+    printf("-----------------------------------------------------------------------\n\n\n");
     printf("                                                   Desea cargar la partida?\n\n");
 }
-
+/// funcion del menu de carga partida, con la eleccion de si acepta o no
 int menuCargaPartida(stpersonaje pj, int i)
 {
     char tecla;
@@ -684,18 +695,16 @@ int menuCargaPartida(stpersonaje pj, int i)
 
     }else{
 
-        if(tecla == teclaAbajo && i<1)
+        if(tecla == teclaDerecha && i<1)
                 i++;
-            else if(tecla == teclaAbajo && i>0)
+            else if(tecla == teclaDerecha && i>0)
                 i = 0;
-            else if(tecla == teclaArriba && i>0)
+            else if(tecla == teclaIzquierda && i>0)
                 i--;
-            else if(tecla == teclaArriba && i<1)
+            else if(tecla == teclaIzquierda && i<1)
                 i = 1;
 
 
         menuCargaPartida(pj, i);
     }
 }
-
-
