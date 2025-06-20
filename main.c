@@ -16,8 +16,9 @@ typedef struct
     int inteligencia;
     int habcarisma;
     int habcheat;
-    char nombre [20];
-    char dibujo [12][100];
+    char nombre[20];
+    char dibujo[14][100];        /// Retrato de pj
+    int fila;                    /// Filas de imagen del retratro
 
 } stpersonaje;
 
@@ -29,19 +30,25 @@ int variableSonido = 1;
 ///PROTOTIPADO
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a);
 void mensaje(int i);
-void cargaImagenes (char archivo[],stImagen imagen[]); /// Archivo de imagen y un arreglo de imagenes cargatodas;
-void verImagen (stImagen imagen);  /// Por parametro la imagen a ver;
+void cargaImagenes (char archivo[],stImagen imagen[]);  /// Archivo de imagen y un arreglo de imagenes cargatodas;
+void verImagen (stImagen imagen);                       /// Por parametro la imagen a ver;
 int opcionesInicio(int i);
 void mensJuego(int i);
 void menuOpciones(int i);
 void reproducirSonido(int i);
 void cambiarSonido();
 
+int seleccion(int i, int opciones, stImagen a[]);       ///Seleccion de pj
+stpersonaje fotopj (stImagen imagen);                   /// Copia imagen del pj Seleccionado en la struct de pj.
 
 int main()
 {
+    ///Variables
+
     char imagenesPepo[] = {"ImagenesEstaticas"};
     stImagen arreglo[30];
+    stpersonaje Personaje1;
+    char nombrePj[20];
     int menu;
     int pj;
 
@@ -60,17 +67,22 @@ int main()
                 system("pause");
                 system("cls");
 
-                ///--------aca menu con arreglo[3],arreglo[4],arreglo[5],arreglo[6]-------
-
                 pj=4+seleccion(0,4,arreglo);
-                printf("pj %i\n",pj);
-                verImagen(arreglo[pj]);
+                Personaje1=fotopj(arreglo[pj]);
+
+                verImagenPJ(Personaje1);
+                printf("Ingrese su nombre: ");
+                gets(&nombrePj);
+                strcpy(Personaje1.nombre,nombrePj);
                 system("pause");
                 system("cls");
 
-                ///guardar el elegigo en la struct de personaje
-                printf("Pedir nombre, pedir edad, poner estadisticar\n\n");
-                printf("Se guarda el personaje\n\n");
+                verImagenPJ(Personaje1);
+                printf("Hola %s\n",Personaje1.nombre);
+
+                printf("Ahora vamos a cargar tus habilidades!!!!\n");
+
+                ///Se guarda el personaje
 
                 system("pause");
                 system("cls");
@@ -81,10 +93,7 @@ int main()
             }
         case 2:
             {
-                verImagen(arreglo[6]);
-                verImagen(arreglo[7]);
-                verImagen(arreglo[8]);
-                verImagen(arreglo[9]);
+
                 printf("Aca se cargo la partida\n");
                 printf("Aca se muestra el personaje guardado\n\n");
 
@@ -96,20 +105,17 @@ int main()
             }
         case 3:
             {
+                system("cls");
                 int aux;
+                printf("                  Ingresaste   al    pasillo!!!!!! \n");
                 verImagen(arreglo[10]);
-                printf("se va a el pasillo\n");
-                printf("Poner  donde vamos \n");
-                printf("4 makano  5 carmelia cantuccini    6 ana maria Rosa  7 beretche \n\n");
+                printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              11:Salir          ELEGIR :");
                 scanf("%i",&aux);
+
                 if(aux<8 && aux>3)
                 {
                     menu=aux;
                 }
-
-
-
-                system("pause");
                 system("cls");
                 break;
             }
@@ -167,12 +173,17 @@ int main()
 
                 break;
             }
+        case 8:
+            {
+
+                break;
+            }
         case 9:
             {
                 printf("Felicidades pasaste de etapa\n");
                 system("pause");
                 system("cls");
-                menu=8;
+                menu=11;
                 break;
             }
         default:
@@ -182,7 +193,7 @@ int main()
 
         }
 
-    }while(menu!=8);
+    }while(menu!=11);
 
 
     return 0;
@@ -269,13 +280,17 @@ void verImagen (stImagen imagen)
     }
 }
 
+void verImagenPJ (stpersonaje imagen)
+{
+    for (int i = 0; i < imagen.fila; i++) {
+        printf("%s\n", imagen.dibujo[i]);
+    }
+}
 int opcionesInicio(int i)
 {
     if(i==0){
-        printf("Retorno 1 para nueva partida\n\n");
         return 1;
     }else if(i==1){
-        printf("retorno 2 para Cargar partida\n\n");
         return 2;
     }else if(i==2)
         moverse(0, 4, mensJuego, menuOpciones, nombreJuego);
@@ -488,7 +503,47 @@ int EjercicioMate2 (stImagen imagen)
      return 0;
 }
 
+/**
+int EjercicioMate3 (stImagen imagen)
+{
+    int num;
+   do
+    {
+        printf("El ejercicio 3 esta dificil te pones nervioso \n");
+        printf("La profe no te presta atencion y el ayudante se durmio\n");
+        printf("Con que habilidad deseas resolver el ejercicio\n");
+        printf(" 1:Inteligencia  2:Carisma 3:Trampa \n");
+        fflush(stdin);
+        scanf("%i",&num
+              if(num==1)
+              {
+                  if (habilidad de pj )
+              }
+              if(num==2)
+              {
+                  printf("Le hablas al ayudante,pero...esta dormido no te oye y fallas\n");
+                  return 0
+              }
+              if(num==3)
+              {
+                  printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
+                  if(habilidad de personaje > 6)
+                  {
+                      printf("Tu habilidad para saltarte las reglas te permiten safar el ejercicio\n");
+                      return 1;
+                  }
+                  else
+                  {
+                      printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
+                      printf("Dejas el ejercicio incompleto\n");
+                      return 0;
+                  }
 
+              }
+    }while(num>3 || num<1);
+
+}
+*/
 int seleccion(int i, int opciones, stImagen a[])
 {
     char tecla;
@@ -520,3 +575,17 @@ int seleccion(int i, int opciones, stImagen a[])
     }
     return pj;
 }
+
+stpersonaje fotopj (stImagen imagen)
+{
+    stpersonaje personaje;
+
+    for(int i=0;i<imagen.fila;i++)
+    {
+        strcpy(personaje.dibujo[i],imagen.dibujo[i]);
+    }
+    personaje.fila=imagen.fila;
+
+    return personaje;
+}
+
