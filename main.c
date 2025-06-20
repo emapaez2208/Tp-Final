@@ -114,7 +114,7 @@ int main()
             }
         case 5:
             {
-
+                verImagen(arreglo[14]);
                 printf("en lo de cantuccini\n");
                 printf("completaste el desafio\n");
                 system("pause");
@@ -125,11 +125,20 @@ int main()
             }
         case 6:
             {
+                int puntos=0;
 
-                printf("en lo de maria rosas\n");
-                printf("completaste el desafio\n");
-                system("pause");
-                system("cls");
+                if (1)
+                {
+                    IntroMate(arreglo[13]);
+                    system("pause");system("cls");
+
+                    EjercicioMate1(arreglo[13]);
+                    system("pause");system("cls");
+
+                    EjercicioMate2 (arreglo[13]);
+                }
+
+
 
                 menu=3;
                 break;
@@ -347,4 +356,163 @@ void Textoinicia(stImagen imagenes[])
     printf("Como nuevo universitario, cada decision, cada parcial, cada pequeño truco que descubras, moldeara tu camino.\n");
     printf("¿Seras el alumno ejemplar o el estratega astuto? Es hora de averiguarlo.\n");
     printf("La aventura comienza ahora!!!\n\n\n");
+}
+
+
+void IntroMate (stImagen imagen)
+{
+    printf("                              Bienvenido a Matematica !!!!!\n");
+    verImagen(imagen);
+    printf("Por recorte de tiempo no vas a tener clases vamos directo al examen\n");
+    printf("Que dios te ayude!!\n");
+}
+
+int EjercicioMate1(stImagen imagen)
+{
+
+   int rta=0;
+
+    do
+    {
+
+        verImagen(imagen);
+        printf("\n");
+        printf("Resolver: x^2+0=4  el valor de x es \n");
+        printf("1:x=1;x=2  2:x=-2;x=2 3:x=-1;x=2\n\n");
+        printf("RTA: ");
+        fflush(stdin);
+        scanf("%i",&rta);
+        system("cls");
+    }while ( rta > 3 || rta < 1 );
+
+    if (rta==2)
+    {
+        printf("Rta correcta");
+        return 1;
+    }
+    printf("Rta incorrecta");
+    return 0;
+}
+
+int EjercicioMate2 (stImagen imagen)
+{
+    int num;
+
+    verImagen(imagen);
+    printf("Desafio coreano!! \nApreta continuar solo si estas listo!!!\n");
+    system("pause");
+    system("cls");
+
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("|  5  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| +6  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| +9  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| -2  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| -4  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| +3  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf(" _____ \n");
+    printf("|     |\n");
+    printf("| +6  |\n");
+    printf("|_____|\n");
+    usleep(500000);
+    system("cls");
+
+    verImagen(imagen);
+    printf("Ingrese resultado: ");
+    fflush(stdin);
+    scanf("&i",&num);
+
+    system("cls");
+
+     if(num==23)
+     {
+         return 2;
+         
+     }
+     
+     return 0;
+}
+
+
+int EjercicioMate3 (stImagen imagen)
+{
+    int num;
+   do
+    { 
+        printf("El ejercicio 3 esta dificil te pones nervioso \n");
+        printf("La profe no te presta atencion y el ayudante se durmio\n");
+        printf("Con que habilidad deseas resolver el ejercicio\n");
+        printf(" 1:Inteligencia  2:Carisma 3:Trampa \n");
+        fflush(stdin);
+        scanf("%i",&num
+              if(num==1)
+              {
+                  if (habilidad de pj )
+              }
+              if(num==2)
+              {
+                  printf("Le hablas al ayudante,pero...esta dormido no te oye y fallas\n");
+                  return 0
+              }
+              if(num==3)
+              {
+                  printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
+                  if(habilidad de personaje > 6)
+                  {
+                      printf("Tu habilidad para saltarte las reglas te permiten safas el ejercicio\n");
+                      return 1;
+                  }
+                  else 
+                  {
+                      printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
+                      printf("Dejas el ejercicio incompleto\n");
+                      return 0;
+                  }
+                  
+              }
+    }while(num>3 || num<1);
+
 }
