@@ -76,6 +76,10 @@ int preguntaOrga2 ( stpersonaje a);
 int preguntaOrga3 ( stpersonaje a);
 int preguntaOrga4 (stpersonaje a);
 
+/// Funcion cargar personaje
+stpersonaje funcionhabilidades ();
+void Verfunciones (stpersonaje a);
+
 
 int main()
 {
@@ -100,6 +104,7 @@ int main()
     ///Profesora cantuccini
     stprofesor profeOrga [1];
     int puntosCantuccini=0;
+
 
     do
     {
@@ -132,8 +137,11 @@ int main()
             printf("Hola %s\n",Personaje1.nombre);
 
             printf("Ahora vamos a cargar tus habilidades!!!!\n");
+            /// German hice esto verificar si les gusta 
 
-            ///Se guarda el personaje
+            Personaje1=funcionhabilidades();
+            Verfunciones(Personaje1);
+
 
             system("pause");
             system("cls");
@@ -1734,6 +1742,61 @@ int preguntaOrga4 (stpersonaje a)
 
     return respuesta;
 }
+/// A partir de aca son las funciones de habilidades de personaje
+stpersonaje funcionhabilidades ()
+{
+    stpersonaje a;
+    int i;
+    int habilidad =0;
+    int puntos=0;
 
+    a.inteligencia=0;
+    a.habcarisma=0;
+    a.habcheat=0;
+
+    printf("\n ATENCION : si usted carga mas puntos de los permitidos volvera a empezar!!!");
+    printf("\nTiene 16 puntos en habilidad para cargar (inteligencia,carisma,cheat).Elija bien su estrategia , se puede poner dificil! \n ");
+        do{
+        habilidad=16;
+        printf("\n             Inteligencia :  ");
+        scanf("%i",&a.inteligencia);
+        habilidad=habilidad-a.inteligencia;
+        //system("cls");
+        if(habilidad>0)
+        {
+
+            printf("\n Le quedan %i  puntos\n",habilidad);
+            printf("\n             Carisma :  ");
+            scanf ("%i",&a.habcarisma);
+
+            habilidad=habilidad-a.habcarisma;
+            // system("cls");
+        }
+        if(habilidad>0)
+        {
+            a.habcheat=0;
+            printf("\n Le quedan %i  puntos\n",habilidad);
+            printf("\n               Cheat ");
+            scanf("%i",&a.habcheat);
+            habilidad=habilidad-a.habcheat;
+            //system("cls");
+        }
+    }
+    while(habilidad<0);
+
+return a;
+}
+void Verfunciones (stpersonaje a)
+{
+
+        puts("\033[34m \n=======================================");
+        printf("\nSus Habilidades son:");
+        printf("\n                   Inteligencia :  %i",a.inteligencia);
+        printf("\n                        Carisma :  %i",a.habcarisma);
+        printf("\n                          Cheat :  %i",a.habcheat);
+        puts("\n=======================================");
+        printf("\033[0m");
+
+}
 
 
