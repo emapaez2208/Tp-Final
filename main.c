@@ -186,14 +186,13 @@ int main()
             }
         case 7:
             {
-
+                verImagen(arreglo[15]);
                 printf("en lo beretcher\n");
-
+                verImagen(arreglo[16]);
                 printf("ganaste??  \n");
                 system("pause");
                 system("cls");
                 scanf("%i",&menu);
-
                 break;
             }
         case 8:
