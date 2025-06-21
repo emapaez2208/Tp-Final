@@ -817,7 +817,7 @@ int resultado (stprofesor p [],stpersonaje a)
     printf("\n Con que habilidad quisiera enfretar al profesor para poder entrar al aula ? \n si lo conoce bien a este profesor ya sabrias que elegir!!!");
     printf("\nCarisma..............1");
     printf("\nInteligencia.........2");
-    printf("\nCheat................3.......");
+    printf("\nCheat................3.......: ");
 
     do
     {
@@ -826,7 +826,7 @@ int resultado (stprofesor p [],stpersonaje a)
         if(3<elegir || elegir<1)
         {
 
-            printf("\n opcion incorrecta , vuelva a elegir .....");
+            printf("\n opcion incorrecta , vuelva a elegir .....:");
         }
     }
     while(elegir!=1 && elegir !=2 && elegir!=3);
@@ -835,13 +835,13 @@ int resultado (stprofesor p [],stpersonaje a)
         if( p[i].Personalidad > a.habcarisma)
         {
             printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, a.habcarisma);
-            printf("\n Duelo perdido vuelve mas tarde a intentarlo");
+            printf("\n Duelo perdido vuelve mas tarde a intentarlo!!\n");
 
         }
         else
         {
             printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, a.habcarisma);
-            printf("\n Duelo Ganado , ahora se viene el parcial cuidado");
+            printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
 
         }
@@ -852,12 +852,12 @@ int resultado (stprofesor p [],stpersonaje a)
         if( p[i].dificultadParcial > a.inteligencia)
         {
             printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, a.inteligencia);
-            printf("\n Duelo perdido vuelve mas tarde a intentarlo");
+            printf("\n Duelo perdido vuelve mas tarde a intentarlo\n");
         }
         else
         {
             printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, a.inteligencia);
-            printf("\n Duelo Ganado , ahora se viene el parcial cuidado");
+            printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
         }
     }
@@ -866,12 +866,12 @@ int resultado (stprofesor p [],stpersonaje a)
         if (p[i].antiCheat > a.habcheat)
         {
             printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, a.habcheat);
-            printf("\n Duelo perdido vuelve mas tarde a intentarlo");
+            printf("\n Duelo perdido vuelve mas tarde a intentarlo\n");
         }
         else
         {
             printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, a.habcheat);
-            printf("\n Duelo Ganado , ahora se viene el parcial cuidado");
+            printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
 
         }
@@ -882,24 +882,33 @@ int resultado (stprofesor p [],stpersonaje a)
     {
 
 
-
         /// Pregunta 1
 
-        printf("\n\n Pasaste la prueba ahora viene la primer pregunta");
+        printf("\n\n Pasaste la prueba ahora viene la primer pregunta,ATENCION!!!");
+        system("pause");
+        system("cls");
         respuesta = Pregunta1(a,p);
-        puts("\n.........................................................................................\n");
+
+
         /// Pregunta 2
-        printf("\n\n siguiete pregunta\n");
+
+        printf("\n\n siguiete pregunta...\n");
+        system("pause");
+        system("cls");
         respuesta2=pregunta2(a,p);
-        puts("\n.........................................................................................\n");
+
         /// Pregunta 3
-        puts("\n.........................................................................................\n");
-        printf("\n\n siguiete pregunta\n");
+
+        printf("\n\n siguiete pregunta...\n");
+        system("pause");
+        system("cls");
         respuesta3=pregunta3(a,p);
-        puts("\n.........................................................................................\n");
+
         /// Pregunta 4
 
-        printf("\n\n siguiete pregunta\n");
+        printf("\n\n siguiete pregunta\n...");
+        system("pause");
+        system("cls");
         respuesta4=pregunta4(a,p);
 
 
@@ -925,7 +934,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
     printf("\n\n\n\033[32m Pregunta 1:");
     printf("\n El interbloque se producecuando vaarios procesos quieren acceder al mismo recurso y el semaforo no se lo permite ");
     printf("\n Verdadero = [v]");
-    printf("\n     Falso = [f]........\033[0m");
+    printf("\n     Falso = [f]........: \033[0m");
     fflush(stdin);
 
     do
@@ -935,7 +944,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
             printf("\n Marque la nueva opcion:");
         }
         scanf(" %c",&opcion);
-        printf("\n Marcaste la opcion....%c",opcion);
+        printf("\n Marcaste la opcion....: %c",opcion);
 
         if(opcion=='v')
         {
@@ -956,7 +965,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
     if(resultado==1)
     {
 
-        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones");
+        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!");
 
         a.inteligencia=a.inteligencia + 1;
         respuesta=1;
@@ -965,7 +974,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
     }
     else
     {
-        printf("\n\n  Ojo tu companiero lo hizo distinto ojo, quieres copiarte ? s/n..... ");
+        printf("\n\n  Ojo tu companiero lo hizo distinto ojo, quieres copiarte ? s/n...:  ");
 
         scanf(" %c",&mmm);
         if(mmm=='n')
@@ -975,7 +984,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
 
         while(mmm=='s')
         {
-            printf("\n Usa algunas de tus habilidades para marear al preofe ;) ");
+            printf("\n Usa algunas de tus habilidades para marear al preofe ;)... ");
             HabilRespuesta (a);
 
             scanf("%i",&elegir);
@@ -991,8 +1000,8 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n Casi me enganias , F de falso!!!");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS.\033[0m ");
                 }
             }
             if(elegir==2)
@@ -1002,7 +1011,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
                 dadoprofe=rand()%10;
                 if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
                 }
                 else
@@ -1024,7 +1033,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             mmm='n';
@@ -1032,7 +1041,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
 
         if(resultado==2)
         {
-            printf("\n Perdiste , Tu respuesta es incorrecta");
+            printf("\n Perdiste , Tu respuesta es incorrecta.");
         }
 
 
@@ -1055,19 +1064,19 @@ int pregunta2 (stpersonaje a, stprofesor p [])
     int resultado=3;
     char opcion ='v';
     printf("\n\n\n\033[32m Pregunta 2:");
-    printf("\n Un semaforo evita que un proceso realice una espera activa en la memoria de disco mientras llega su turno de ejecucion ");
+    printf("\n Un semaforo evita que un proceso realice una espera activa en la memoria de disco mientras llega su turno de ejecucion. ");
     printf("\n Verdadero = [v]");
-    printf("\n     Falso = [f]........\033[0m");
+    printf("\n     Falso = [f]......: \033[0m");
     fflush(stdin);
 
     do
     {
         if(mmm=='s')
         {
-            printf("\n Marque la nueva opcion:");
+            printf("\n Marque la nueva opcion: ");
         }
         scanf(" %c",&opcion);
-        printf("\n Maraste la opcion....%c",opcion);
+        printf("\n Maraste la opcion...: %c",opcion);
 
         if(opcion=='v')
         {
@@ -1079,7 +1088,7 @@ int pregunta2 (stpersonaje a, stprofesor p [])
             resultado=0;
 
         }
-        printf("\n Quieres cambiar la respuesta ?  s/n");
+        printf("\n Quieres cambiar la respuesta ?   s/n");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1087,7 +1096,7 @@ int pregunta2 (stpersonaje a, stprofesor p [])
     if(resultado==1)
     {
 
-        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones");
+        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!!");
         a.inteligencia=a.inteligencia + 1;
         respuesta=1;
 
@@ -1095,9 +1104,8 @@ int pregunta2 (stpersonaje a, stprofesor p [])
     else
     {
 
-        /// printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS \033[0m");
 
-        printf("\n\n Quieres cambiar la respuesta ?s/n.. El profesor esta distraido..... ");
+        printf("\n\n  El profesor esta distraido!!! Quieres cambiar la respuesta ?  s/n..:  ");
 
         scanf(" %c",&mmm);
         if(mmm=='n')
@@ -1107,7 +1115,7 @@ int pregunta2 (stpersonaje a, stprofesor p [])
 
         while(mmm=='s')
         {
-            printf("\n Usa alguna de tus habilidades para marear al preofe ;) ");
+            printf("\n Usa alguna de tus habilidades para marear al preofe ;).");
             HabilRespuesta (a);
 
             scanf("%i",&elegir);
@@ -1118,13 +1126,13 @@ int pregunta2 (stpersonaje a, stprofesor p [])
                 dadoprofe=rand()%10;
                 if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
                 }
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             if(elegir==2)
@@ -1134,13 +1142,13 @@ int pregunta2 (stpersonaje a, stprofesor p [])
                 dadoprofe=rand()%10;
                 if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
                 }
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             if(elegir==3)
@@ -1155,8 +1163,8 @@ int pregunta2 (stpersonaje a, stprofesor p [])
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n Casi me enganias , F de falso.");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!! \033[0m ");
                 }
             }
             mmm='n';
@@ -1164,7 +1172,7 @@ int pregunta2 (stpersonaje a, stprofesor p [])
 
         if(resultado==2)
         {
-            printf("\n Perdiste , Tu respuesta es incorrecta");
+            printf("\n Perdiste , Tu respuesta es incorrecta.");
         }
 
 
@@ -1191,7 +1199,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
     printf("\n      Se envia a LISTOS :......a");
     printf("\n  Se envia a  BLOQUEADOS:......b");
     printf("\n            Queda en CPU: .....c");
-    printf("\n Ninguna de las anteriores:....d.........\033[0m");
+    printf("\n Ninguna de las anteriores:....d......:  \033[0m");
 
 
 
@@ -1202,7 +1210,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
             printf("\n Marque la nueva opcion:");
         }
         scanf(" %c",&letra);
-        printf("\n Maraste la opcion....%c",letra);
+        printf("\n Maraste la opcion....: %c",letra);
 
         if(letra=='c')
         {
@@ -1214,7 +1222,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
             resultado=0;
 
         }
-        printf("\n mmmm esta pregunta es enganiosa!!! Quieres cambiar la respuesta ?  s/n");
+        printf("\n mmmm esta pregunta es enganiosa!!! Quieres cambiar la respuesta ?  s/n   : ");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1223,7 +1231,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
     if(resultado==1)
     {
 
-        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones");
+        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!!");
         a.inteligencia=a.inteligencia + 1;
         respuesta=1;
     }
@@ -1326,7 +1334,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
     printf("\n Dado el valor del semaforo con contador = -1 puedo afirmar que :  ");
     printf("\n Que hay un proceso bloqueado:...........a");
     printf("\n No hay ningun proceso bloqueado:........b");
-    printf("\n Que hay al menos un proceso bloqueado:..c.........\033[0m");
+    printf("\n Que hay al menos un proceso bloqueado:..c......:  \033[0m");
 
 
     do
@@ -1336,7 +1344,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
             printf("\n Marque la nueva opcion:");
         }
         scanf(" %c",&letra);
-        printf("\n Maraste la opcion....%c",letra);
+        printf("\n Maraste la opcion....: %c",letra);
 
         if(letra=='a')
         {
@@ -1348,7 +1356,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
             resultado=0;
 
         }
-        printf("\n Estas seguroooooo!!! O quieres cambiar la respuesta ?  s/n");
+        printf("\n Estas seguroooooo!!! O quieres cambiar la respuesta ?  s/n :  ");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1356,16 +1364,15 @@ int pregunta4 (stpersonaje a, stprofesor p [])
     if(resultado==1)
     {
 
-        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones");
+        printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!");
         a.inteligencia=a.inteligencia + 1;
         respuesta=1;
     }
     else
     {
 
-        /// printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS \033[0m");
 
-        printf("\n\n  El profesor esta distraido.....Tienes una chances mas de cambiar la respuesta, apurate dale ? s/n... ");
+        printf("\n\n  El profesor esta distraido...Tienes una chances mas de cambiar la respuesta, quieres hacerlo ? s/n..:  ");
 
         scanf(" %c",&mmm);
         if(mmm=='n')
@@ -1375,7 +1382,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
 
         while(mmm=='s')
         {
-            printf("\n Usa alguna de tus habilidades para marear al preofe ;) ");
+            printf("\n Usa alguna de tus habilidades para marear al preofe ;). ");
             HabilRespuesta (a);
 
             scanf("%i",&elegir);
@@ -1386,13 +1393,13 @@ int pregunta4 (stpersonaje a, stprofesor p [])
                 dadoprofe=rand()%10;
                 if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta!");
                     respuesta=1;
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n Casi me enganias , F de falso.");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!! \033[0m ");
                 }
             }
             if(elegir==2)
@@ -1402,13 +1409,13 @@ int pregunta4 (stpersonaje a, stprofesor p [])
                 dadoprofe=rand()%10;
                 if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta!!");
                     respuesta=1;
                 }
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!! \033[0m ");
                 }
             }
             if(elegir==3)
@@ -1418,13 +1425,13 @@ int pregunta4 (stpersonaje a, stprofesor p [])
                 dadoprofe=rand()%10;
                 if( a.habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
                 }
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             mmm='n';
@@ -1432,7 +1439,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
 
         if(resultado==2)
         {
-            printf("\n Perdiste , Tu respuesta es incorrecta");
+            printf("\n Perdiste , Tu respuesta es incorrecta.");
         }
 
 
@@ -1470,14 +1477,22 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje a)
     printf("\n\n.....................BIENVENIDOS..A..LA..CLASE..DE..CANTUCCINI..............\n\n");
 
     printf("\n Tiene un pase directo al aula, piense bien sus estrategias para lograr objetivos!!!");
-    printf("\n\n Se viene la primer pregunta");
+    printf("\n\n Se viene la primer pregunta...\n");
+    system("pause");
+    system("cls");
 
     respuesta1=preguntaOrga1(pp,a);
-    puts("\n.........................................................................................\n");
+    puts("\n\nSiguiente pregunta...\n");
+    system("pause");
+    system("cls");
     respuesta2=preguntaOrga2(a);
-    puts("\n.........................................................................................\n");
+    puts("\n\nSiguiente pregunta...\n");
+    system("pause");
+    system("cls");
     respuesta3=preguntaOrga3(a);
-    puts("\n.........................................................................................\n");
+    puts("\n\nSiguiente pregunta...\n");
+    system("pause");
+    system("cls");
     respuesta4=preguntaOrga4(a);
 
 
@@ -1500,18 +1515,18 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
     char palabra[20];
 
 
-    printf("\n\n \033[32m.................Complete la palabra que falta............ ");
+    printf("\n\n \033[32m.................Complete la palabra que falta............\n ");
     printf("\nHablemos de una matriz FODA ...Que significa cada una de esas siglas ?");
     printf("\nF = fortaleza");
     printf("\nO = oportunidad");
-    printf("\nD = ...........");
+    printf("\nD = (...........)");
     printf("\nA = amenaza");
     printf("\033[0m");
 
     printf("\n Quiere usar algunas de tus habilidades para contestar las pregunta ? s/n... si es 'n' complete la palabra ");
      do
         {
-            printf("\n MARQUE LA OPCION BIEN....s/n...... ");
+            printf("\n MARQUE ...( s/n )");
 
              fflush(stdin);
        scanf(" %c",&mmm);
@@ -1531,13 +1546,13 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
             dadoprofe=rand()%10;
             if( a.inteligencia+dado > pp[i].dificultadParcial + dadoprofe)
             {
-                printf("\n Me has confundio Tu respuesta es correcta");
+                printf("\n Me has mareado !!!!  Tu respuesta es correcta.");
                 respuesta=1;
             }
             else
             {
                 printf("\n Casi me enganias , F de falso");
-                printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!!\033[0m ");
             }
         }
         if(elegir==2)
@@ -1547,13 +1562,13 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
             dadoprofe=rand()%10;
             if( a.habcarisma+dado > pp[i].Personalidad + dadoprofe)
             {
-                printf("\n Me has confundio Tu respuesta es correcta");
+                printf("\n Me has confundio Tu respuesta es correcta!");
                 respuesta=1;
             }
             else
             {
                 printf("\n Casi me enganias , F de falso");
-                printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                printf("\n\n\033[41m su respuesta es incorrecta , ESTUDIA MAS PARA LA PROXIMA !!!\033[0m ");
             }
         }
         if(elegir==3)
@@ -1563,13 +1578,13 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
             dadoprofe=rand()%10;
             if( a.habcheat+dado > pp[i].antiCheat + dadoprofe)
             {
-                printf("\n Me has confundio Tu respuesta es correcta");
+                printf("\n MMMMM me distraje!!! Tu respuesta es correcta.");
                 respuesta=1;
             }
             else
             {
                 printf("\n Casi me enganias , F de falso");
-                printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                printf("\n\n\033[41m su respuesta es incorrecta , SIGA ESTUDIANDO!!!033[0m ");
             }
         }
 
@@ -1581,8 +1596,8 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
         gets(&palabra);
         if(strcmpi(palabra,"debilidad")==0)
         {
-            printf("\n Su respuesta es correcta , Felicitaciones");
-            printf("\n Tome 1 puntos de carisma");
+            printf("\n Su respuesta es correcta , Felicitaciones!!!");
+            printf("\n Tome 1 puntos de carisma.");
             respuesta=1;
             a.habcarisma=a.habcarisma+1;
 
@@ -1590,7 +1605,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
         else
         {
 
-            printf("\nLo siento tu respuesta es incorrecta");
+            printf("\nLo siento tu respuesta es incorrecta.\n");
         }
     }
 
@@ -1602,24 +1617,24 @@ int preguntaOrga2 ( stpersonaje a)
     int ii=0;
     int respuesta = 0;
     char palabra[20];
-    printf("\n\n \033[32m.................Complete la palabra que falta............ ");
+    printf("\n\n \033[32m.................Complete la palabra que falta............\n ");
     printf("\n\n Cuando decimos que está ligada a características de alta COMPETITIVIDAD, magnificencia,\n productividad,GRAN IMPACTO, CALIDAD, efectividad.");
     printf("\n\nHablamos de una empresa moderna o tradicional?");
-    printf("\n     Empresa ......");
+    printf("\n     Empresa (......)  ");
 
     printf("\033[0m");
     fflush(stdin);
     gets(&palabra);
     if(strcmpi(palabra, "moderna")==0)
     {
-        printf("\n Respuesta correcta , segui asi");
-        printf("\n Te ganaste 1 puntos de carisma");
+        printf("\n Respuesta correcta , segui asi!!");
+        printf("\n Te ganaste 1 puntos de carisma.");
         a.habcarisma=a.habcarisma+1;
         respuesta=1;
     }
     else
     {
-        printf("\n La proxima te va a ir mejor , respuesta INCORRECTA");
+        printf("\n La proxima te va a ir mejor , respuesta INCORRECTA!");
     }
 
     return respuesta;
@@ -1630,12 +1645,12 @@ int preguntaOrga3 ( stpersonaje a)
     int i=0;
     int respuesta=0;
     char resultado='f';
-    printf("\n\033[32m..............Conteste verdaderos (v) o falso (f).................... ");
+    printf("\n\033[32m.................Conteste verdaderos (v) o falso (f)....................\n ");
     printf("\nHablando de las habilidades de una persona");
     printf("\nEl concepto de habilidades blandas hace referencia a todos los conocimientos teóricos o técnicos que posee un profesional,");
     printf("\nindependiente de su área de trabajo. se relacionan con el nivel de conocimientos técnicos y preparación académica.");
     printf("\nVERDADERO......V");
-    printf("\nFALSO..........F......");
+    printf("\nFALSO..........F...:  ");
     printf("\033[0m");
     fflush(stdin);
     scanf(" %c",&resultado);
@@ -1649,7 +1664,7 @@ int preguntaOrga3 ( stpersonaje a)
     else
     {
 
-        printf("\n La respuesta es incorrecta , en este caso estamos hablando de una Habilidad 'DURA'");
+        printf("\n La respuesta es incorrecta , en este caso estamos hablando de una Habilidad 'DURA' !!!");
     }
 
     return respuesta;
@@ -1661,12 +1676,14 @@ int preguntaOrga4 (stpersonaje a)
     int respuesta=0;
 
     printf("\n..............OJO..LA..PROFESORA..ESTA..OBSEBANDO................\n\n ");
-    printf("\n                      o  o o          o o  o    ");
-    printf("\n                    o        o      o        o  ");
-    printf("\n                    o    00   o     o   00   o  ");
-    printf("\n                    o    00   o     o   00   o            ");
-    printf("\n                     o       o       o      o    ");
-    printf("\n                       o o o           o o o                   ");
+    printf("\n\033[31m");
+    printf("\n                      o  o o          o o  o                     ");
+    printf("\n                    o        o      o        o                   ");
+    printf("\n                    o    00   o     o   00   o                   ");
+    printf("\n                    o    00   o     o   00   o                   ");
+    printf("\n                     o       o       o      o                    ");
+    printf("\n                       o o o           o o o                     ");
+    printf("\033[0m");
 
 
     printf("\n\n\n\033[32m Te ofrecieron un machete!!! para esta pregunta. Lo deseas usar ?     s/n   .......");
@@ -1717,3 +1734,6 @@ int preguntaOrga4 (stpersonaje a)
 
     return respuesta;
 }
+
+
+
