@@ -137,7 +137,7 @@ int main()
             printf("Hola %s\n",Personaje1.nombre);
 
             printf("Ahora vamos a cargar tus habilidades!!!!\n");
-            /// German hice esto verificar si les gusta 
+            /// German hice esto verificar si les gusta
 
             Personaje1=funcionhabilidades();
             Verfunciones(Personaje1);
@@ -1246,7 +1246,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
     else
     {
 
-        /// printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS \033[0m");
+
 
         printf("\n\n Quieres cambiar la respuesta ? s/n.. El profesor esta distraido..... ");
 
@@ -1337,7 +1337,7 @@ int pregunta4 (stpersonaje a, stprofesor p [])
 
     int resultado=3;
     char letra='a';
-    printf("\n\n\n\033[32m Pregunta 3:");
+    printf("\n\n\n\033[32m Pregunta 4 y ultima:");
     printf("\n Elegir la apcion correcta ");
     printf("\n Dado el valor del semaforo con contador = -1 puedo afirmar que :  ");
     printf("\n Que hay un proceso bloqueado:...........a");
