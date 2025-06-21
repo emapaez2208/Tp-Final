@@ -129,18 +129,17 @@ int main()
             }
         case 3:
             {
+                 do
+                {
                 system("cls");
-                int aux;
                 printf("                  Ingresaste   al    pasillo!!!!!! \n");
                 verImagen(arreglo[10]);
                 printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              0:Salir          ELEGIR :");
-                scanf("%i",&aux);
-
-                if((aux<9 && aux>3) || aux == 0)
-                {
-                    menu=aux;
-                }
+                fflush(stdin);
+                scanf("%i",&menu);
                 system("cls");
+                }while( menu < 0 || (menu > 0 && menu < 4) || menu > 8 );
+
                 break;
             }
         case 4:
