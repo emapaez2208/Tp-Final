@@ -163,7 +163,7 @@ int main()
             menu = moverse(0, 4, mensajeInicial, opcionesInicio, nombreJuego);
             break;
 
-
+        }
         case 1:
         {
             textoInicial(arreglo);
