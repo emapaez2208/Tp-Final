@@ -90,6 +90,14 @@ int EjercicioMate2(stImagen imagen);
 int EjercicioMate3(stImagen imagen, stpersonaje *Personaje1);
 
 /// CASE 7: Programacion Beretcher
+int desafrioProgramacion1();
+int menorPila (Pila* dada);
+int desafrioProgramacion2();
+void ordenarPilaSelec (Pila* dada);
+int desafrioProgramacion3(stpersonaje pj);
+int responderInteligencia();
+int responderCarisma(stpersonaje pj);
+int responderCheat();
 
 /// CASE 8: Guardar Partida
 void guardarPartida(char archivo[], stpersonaje a);
@@ -107,8 +115,22 @@ int main()
     stpersonaje Personaje1;
     char nombrePj[20];
     int menu = 0;
-    int pj;
+    int pj, num;
     int cargaExitosa;
+
+    /// Pila para desafio de programacion
+    Pila pilaCargada;
+    inicpila(&pilaCargada);
+
+    apilar(&pilaCargada, 2);
+    apilar(&pilaCargada, 8);
+    apilar(&pilaCargada, 9);
+    apilar(&pilaCargada, 1);
+    apilar(&pilaCargada, 7);
+    apilar(&pilaCargada, 3);
+    apilar(&pilaCargada, 6);
+    apilar(&pilaCargada, 5);
+    apilar(&pilaCargada, 4);
 
     ///Carga de Archivo de Imagenes
     cargaImagenes(imagenesPepo, arreglo);
@@ -247,8 +269,6 @@ int main()
                 system("pause");system("cls");
             }
 
-
-
             menu=3;
             break;
         }
@@ -257,10 +277,41 @@ int main()
             verImagen(arreglo[15]);
             printf("en lo beretcher\n");
             verImagen(arreglo[16]);
-            printf("ganaste??  \n");
+
+            mostrar(&pilaCargada);
+
+            num = desafrioProgramacion1();
+        
+            if(num == 1){
+                printf("Felicidades ahora vamos por la segunda funcion:\n\n");
+                num = desafrioProgramacion2();
+        
+                if(num == 1){
+                    printf("MUY BIEN LO LOGRASTE!!\n\n");
+                    ordenarPilaSelec(&pilaCargada);
+                    printf("Asi quedo la pila ordenada: \n\n");
+                    mostrar(&pilaCargada);
+                    system("pause");
+                    system("cls");
+                    num = desafrioProgramacion3(Personaje1);
+        
+                    if(num == 1){
+                        printf("FELICIDADES! ACABAS DE VENCER EL JUEGO");
+                        menu = 9;
+                    }else{
+                        printf("Fallaste vuelve a intentarlo!\n\n");
+                        menu = 3;
+                    }
+                }else{
+                    printf("Fallaste vuelve a intentarlo!\n\n");
+                    menu = 3;
+                }
+            }else{
+                printf("Fallaste vuelve a intentarlo!\n\n");
+                menu = 3;
+            }
             system("pause");
             system("cls");
-            scanf("%i",&menu);
             break;
         }
         case 8:
@@ -1813,5 +1864,327 @@ void guardarPartida(char archivo[], stpersonaje a)
 }
 
 ///------------------------------------------------- CASE  9 -----------------------------------------
+int desafrioProgramacion1()
+{
+    char ingreso[30];
+    int
+    flag = 0;
+
+    printf("Vamos a ordenar la Pila anterior por el metodo de seleccion!!\n\n");
+    printf("        Estas listo??\n\n");
+    system("pause");
+    system("cls");
+
+    printf("Complete las siguientes funciones! : \n\n");
+
+    printf("\033[32m.... menorPila (Pila* dada) : \033[0m");
+    fflush(stdin);
+    gets(&ingreso);
+    system("cls");
+
+    if(strcmpi(ingreso, "int") == 0){
+        printf("Complete las siguientes funciones! : \n\n");
+
+        printf("\033[32mint menorPila (Pila* dada)\n{\n");
+        printf("    int menor;\n\n");
+        printf("    Pila aux;\n    inicpila(&aux);\n    menor = desapilar(dada);\n\n");
+        printf("    while(..........) : \033[0m");
+        fflush(stdin);
+        gets(&ingreso);
+        system("cls");
+
+        if(strcmpi(ingreso, "!pilavacia(dada)") == 0){
+
+            printf("Complete las siguientes funciones! : \n\n");
+
+            printf("\033[32mint menorPila (Pila* dada)\n{\n");
+            printf("    int menor;\n\n");
+            printf("    Pila aux;\n    inicpila(&aux);\n    menor = desapilar(dada);\n\n");
+            printf("    while(!pilavacia(dada)){\n\n");
+            printf("        if(tope(dada) < menor){\n\n           apilar(&aux, menor);\n           menor = desapilar(dada);\n\n        }else{\n            apilar(& ... , desapilar(dada)); : \033[0m");
+            fflush(stdin);
+            gets(&ingreso);
+            system("cls");
+
+            if(strcmpi(ingreso, "aux") == 0){
+
+                printf("Complete las siguientes funciones! : \n\n");
+
+                printf("\033[32mint menorPila (Pila* dada)\n{\n");
+                printf("    int menor;\n\n");
+                printf("    Pila aux;\n    inicpila(&aux);\n    menor = desapilar(dada);\n\n");
+                printf("    while(!pilavacia(dada)){\n\n");
+                printf("        if(tope(dada) < menor){\n\n           apilar(&aux, menor);\n           menor = desapilar(dada);\n\n        }else{\n            apilar(&aux , desapilar(dada));\n       }\n");
+                printf("    while(!pilavacia(&aux)){\n      apilar(dada), desapilar(&aux));\n   }\n");
+                printf("    return .... ; : \033[0m");
+                fflush(stdin);
+                gets(&ingreso);
+                system("cls");
+
+                if(strcmpi(ingreso, "menor") == 0){
+
+                    printf("Complete las siguientes funciones! : \n\n");
+
+                    printf("\033[32mint menorPila (Pila* dada)\n{\n");
+                    printf("    int menor;\n\n");
+                    printf("    Pila aux;\n    inicpila(&aux);\n    menor = desapilar(dada);\n\n");
+                    printf("    while(!pilavacia(dada)){\n\n");
+                    printf("        if(tope(dada) < menor){\n\n           apilar(&aux, menor);\n           menor = desapilar(dada);\n\n        }else{\n            apilar(&aux , desapilar(dada));\n       }\n");
+                    printf("    while(!pilavacia(&aux)){\n      apilar(dada), desapilar(&aux));\n   }\n");
+                    printf("    return menor;\033[0m\n\n");
+                    flag = 1;
+                    system("pause");
+                    system("cls");
+                }
+            }
+        }
+
+    }
+    return flag;
+}
+
+int menorPila (Pila* dada)
+{
+    int menor;
+
+    Pila aux;
+    inicpila(&aux);
+
+    menor = desapilar(dada);
+
+    while(!pilavacia(dada)){
+
+        if(tope(dada) < menor){
+
+            apilar(&aux, menor);
+            menor = desapilar(dada);
+
+        } else{
+
+            apilar(&aux, desapilar(dada));
+        }
+    }
+    while (!pilavacia(&aux)){
+
+        apilar(dada, desapilar(&aux));
+    }
+    return menor;
+}
+
+int desafrioProgramacion2()
+{
+    char palabra[30];
+    int flag = 0;
+
+    printf("Segunda funcion: \n\n");
+    printf("\033[32m.... ordenarPila(Pila* dada) : \033[0m");
+    fflush(stdin);
+    gets(&palabra);
+    system("cls");
+
+    if(strcmpi(palabra, "void") == 0){
+
+        printf("Segunda funcion: \n\n");
+        printf("\033[32mvoid ordenarPila(Pila* dada)\n{\n");
+        printf("    Pila aux;\n    Pila aux2;\n    inicpila(&aux);\n    inicpila(&aux2);\n\n");
+        printf("    while(!pilavacia(dada)){\n\n");
+        printf("        .... (&aux, menorPila(dada)) : \033[0m");
+        fflush(stdin);
+        gets(&palabra);
+        system("cls");
+
+        if(strcmpi(palabra, "apilar") == 0){
+
+            printf("Segunda funcion: \n\n");
+            printf("\033[32mvoid ordenarPila(Pila* dada)\n{\n");
+            printf("    Pila aux;\n    Pila aux2;\n    inicpila(&aux);\n    inicpila(&aux2);\n\n");
+            printf("    while(!pilavacia(dada)){\n\n");
+            printf("        apilar (&aux, menorPila(dada));\n   }\n\n");
+            printf("    while(!pilavacia(&aux)){\n\n");
+            printf("        apilar(&aux2, ....... (&aux)); : \033[0m");
+            fflush(stdin);
+            gets(&palabra);
+            system("cls");
+
+            if(strcmpi(palabra, "desapilar") == 0){
+
+                printf("Segunda funcion: \n\n");
+                printf("\033[32mvoid ordenarPila(Pila* dada)\n{\n");
+                printf("    Pila aux;\n    Pila aux2;\n    inicpila(&aux);\n    inicpila(&aux2);\n\n");
+                printf("    while(!pilavacia(dada)){\n\n");
+                printf("        apilar (&aux, menorPila(dada));\n   }\n\n");
+                printf("    while(!pilavacia(&aux)){\n\n");
+                printf("        apilar(&aux2, desapilar(&aux));\n   }\n\n");
+                printf("    while(!pilavacia(&aux2)){\n\n");
+                printf("        apilar( .... , desapilar(&aux2)); : \033[0m");
+                fflush(stdin);
+                gets(&palabra);
+                system("cls");
+
+                if(strcmpi(palabra, "dada") == 0){
+
+                    printf("Segunda funcion: \n\n");
+                    printf("\033[32mvoid ordenarPila(Pila* dada)\n{\n");
+                    printf("    Pila aux;\n    Pila aux2;\n    inicpila(&aux);\n    inicpila(&aux2);\n\n");
+                    printf("    while(!pilavacia(dada)){\n\n");
+                    printf("        apilar (&aux, menorPila(dada));\n   }\n\n");
+                    printf("    while(!pilavacia(&aux)){\n\n");
+                    printf("        apilar(&aux2, desapilar(&aux));\n   }\n\n");
+                    printf("    while(!pilavacia(&aux2)){\n\n");
+                    printf("        apilar( dada , desapilar(&aux2));\n    }\n}\033[0m\n\n");
+
+                    system("pause");
+                    system("cls");
+                    flag = 1;
+                }
+
+            }
+        }
+    }
+    return flag;
+}
+
+void ordenarPilaSelec (Pila* dada)
+{
+    Pila aux;
+    Pila aux2;
+    inicpila(&aux);
+    inicpila(&aux2);
+
+    while(!pilavacia(dada)){
+
+
+        apilar(&aux, menorPila(dada));
+    }
+
+
+    while(!pilavacia(&aux)){
+
+        apilar(&aux2, desapilar(&aux));
+    }
+
+    while(!pilavacia(&aux2)){
+
+        apilar(dada, desapilar(&aux2));
+    }
+}
+
+int desafrioProgramacion3(stpersonaje pj)
+{
+    int flag = 0;
+    int eleccion;
+
+    printf("    Ultimo desafio!!\n      Estas listo?\n\n");
+    system("pause");
+    system("cls");
+
+    printf("ALTO... se te presenta Clarisa antes de entrar al laboratorio a rendir.. \nTe cuenta del parcial que tuvo antes, y te lo manda por wp..\nSeguramente te tomen el mismo parcial!\n\n");
+    printf("Ahora si estas listo?\n\n");
+    system("pause");
+    system("cls");
+
+    do{
+    printf("Desea responder la pregunta con: \n\n\033[32m     1 = inteligencia        2 = carisma\n               3 = cheat\n\n");
+    printf("        Elegir: ");
+    fflush(stdin);
+    scanf(" %i", &eleccion);
+    printf("\033[0m");
+    system("cls");
+    }while(eleccion < 1 || eleccion > 3);
+
+    if(eleccion == 1){
+
+        flag = responderInteligencia();
+    }else if(eleccion == 2){
+        if(pj.habcarisma > 5)
+            flag = responderCarisma(pj);
+        else
+            printf("Lo sentimos el profe no puede ayudarte, no le caes bien!\n\n");
+    }else if(eleccion == 3){
+        flag = responderCheat();
+    }
+    return flag;
+}
+
+int responderInteligencia()
+{
+    int flag = 0;
+    int resp;
+
+    printf("Considerando que el archivo datos.bin contiene 5 registros grabados correctamente. \nQue numero de registro fue leido finalmente por la funcion?: \n\n");
+    printf("\033[32mvoid leer(char nombreArchivo[])\n{\n");
+    printf("    FILE* fp = fopen(nombreArchivo, \"rb\");\n    Registro r;\n\n");
+    printf("    if(fp != NULL){\n\n");
+    printf("        fseek(fp, 2*sizeof(Registro), SEEK_SET);\n");
+    printf("        fseek(fp, sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, (-1)*sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 1 * sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 0, SEEK_CUR);\n");
+    printf("        fseek(fp, (-2)*sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 0, SEEK_CUR);\n");
+    printf("        fseek(fp, 4 * sizeof(Registro), SEEK_SET);\n");
+    printf("        fseek(fp, (-1) * sizeof(Registro), SEEK_CUR);\n\n");
+    printf("        fread(&r, sizeof(Registro), 1, fp);\n\n");
+    printf("        fclose(fp);\n     }\n}\033[0m");
+
+    printf("\n\nRespuesta: ");
+    fflush(stdin);
+    scanf("%i", &resp);
+    system("cls");
+
+    if(resp == 4)
+        flag = 1;
+
+    return flag;
+}
+
+int responderCarisma(stpersonaje pj)
+{
+    int flag = 0;
+    int resp;
+
+    printf("Considerando que el archivo datos.bin contiene 5 registros grabados correctamente. \nQue numero de registro fue leido finalmente por la funcion?: \n\n");
+    printf("\033[32mvoid leer(char nombreArchivo[])\n{\n");
+    printf("    FILE* fp = fopen(nombreArchivo, \"rb\");\n    Registro r;\n\n");
+    printf("    if(fp != NULL){\n\n");
+    printf("        fseek(fp, 2*sizeof(Registro), SEEK_SET);\n");
+    printf("        fseek(fp, sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, (-1)*sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 1 * sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 0, SEEK_CUR);\n");
+    printf("        fseek(fp, (-2)*sizeof(Registro), SEEK_CUR);\n");
+    printf("        fseek(fp, 0, SEEK_CUR);\n");
+    printf("        fseek(fp, 4 * sizeof(Registro), SEEK_SET);\n");
+    printf("        fseek(fp, (-1) * sizeof(Registro), SEEK_CUR);\n\n");
+    printf("        fread(&r, sizeof(Registro), 1, fp);\n\n");
+    printf("        fclose(fp);\n     }\n}\033[0m");
+
+    printf("\n\nRespuesta: ");
+    fflush(stdin);
+    scanf("%i", &resp);
+
+    if(resp == 4)
+        flag = 1;
+    else{
+        printf("El profe te observa y dice que te fijes bien, observa las ultimas 2 lineas del fseek son sus palabras...\n\n");
+        printf("\n\nRespuesta: ");
+        fflush(stdin);
+        scanf("%i", &resp);
+        if(resp == 4)
+            flag = 1;
+    }
+
+    return flag;
+}
+
+int responderCheat()
+{
+    printf("El profe se entero que filtraron el parcial de la otra comision..\n\n\033[33mTe encontro todas las coincidencias con las respuestas del parcial filtrado!\n\n");
+    printf("    El profe te manda a recuperatorio de una ! ESTAS FUERA\n\n\033[0m");
+    system("pause");
+    system("cls");
+
+    return 0;
+}
 
 //Fin del juego
