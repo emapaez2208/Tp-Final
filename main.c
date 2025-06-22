@@ -171,7 +171,6 @@ int main()
             system("cls");
 
             pj=seleccion(0,4,StatsPj,arreglo);
-            printf("%i",pj);
             Personaje1=FotoStatsPj(StatsPj[pj-2],arreglo[pj+4]);
 
             verImagenPJ(Personaje1);
@@ -181,7 +180,7 @@ int main()
             system("pause");
             system("cls");
 
-            printf("\nHola %s\n\n\n",Personaje1.nombre);
+            printf("\nHola %s\n",Personaje1.nombre);
             Verfunciones(Personaje1);
 
             system("pause");
