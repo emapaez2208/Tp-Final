@@ -218,14 +218,16 @@ int main()
             if (1)
             {
                 introMate(arreglo[13]);
-                system("pause");
-                system("cls");
+                system("pause");system("cls");
 
                 EjercicioMate1(arreglo[13]);
-                system("pause");
-                system("cls");
+                system("pause");system("cls");
 
                 EjercicioMate2 (arreglo[13]);
+                system("pause");system("cls");
+            
+                EjercicioMate3 (arreglo[13],&Personaje1);
+                system("pause");system("cls");
             }
 
 
@@ -622,47 +624,81 @@ int EjercicioMate2 (stImagen imagen)
     return 0;
 }
 
-/**
-int EjercicioMate3 (stImagen imagen)
+int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
 {
     int num;
    do
     {
+        verImagen(imagen);
         printf("El ejercicio 3 esta dificil te pones nervioso \n");
         printf("La profe no te presta atencion y el ayudante se durmio\n");
         printf("Con que habilidad deseas resolver el ejercicio\n");
         printf(" 1:Inteligencia  2:Carisma 3:Trampa \n");
         fflush(stdin);
-        scanf("%i",&num
-              if(num==1)
+        scanf("%i",&num);
+
+        system("cls");
+              if(num == 1)
               {
-                  if (habilidad de pj )
-              }
-              if(num==2)
-              {
-                  printf("Le hablas al ayudante,pero...esta dormido no te oye y fallas\n");
-                  return 0
-              }
-              if(num==3)
-              {
-                  printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
-                  if(habilidad de personaje > 6)
-                  {
-                      printf("Tu habilidad para saltarte las reglas te permiten safar el ejercicio\n");
-                      return 1;
-                  }
+                  verImagen(imagen);
+                  if ((*Personaje1).inteligencia>6 )
+                    {
+                        printf("Despues de todo algo hay en ese cerebro y resuelves con exito\n");
+                        printf("Aunq lo resuelves quedas agotado -2 inteligencia\n");
+                        if((*Personaje1).inteligencia<2 )
+                        {
+                          (*Personaje1).inteligencia=0;
+                        }
+                        else
+                        {
+                            (*Personaje1).inteligencia=(*Personaje1).inteligencia-2;
+                        }
+                        system("pause");
+                        system("cls");
+                        return 2;
+                    }
                   else
-                  {
-                      printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
-                      printf("Dejas el ejercicio incompleto\n");
-                      return 0;
-                  }
+                    {
+                        printf("Porque no estudiaste un poco mas?? \n");
+                        printf("No lo sabes por eso estas nervioso intenta y fallas\n");
+                        printf("Aun no resuelves lo intentaste +2 inteligencia\n");
+                        (*Personaje1).inteligencia=(*Personaje1).inteligencia+2;
+                        system("pause");
+                        system("cls");
+
+                    return 0;
+                    }
+                }
+            else if(num==2)
+                    {
+                        verImagen(imagen);
+                        printf("Le hablas al ayudante,pero...esta dormido no te oye y fallas\n");
+                        return 0;
+                    }
+            else if(num==3)
+                    {
+                        verImagen(imagen);
+                        printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
+
+                        if((*Personaje1).habcheat > 6)
+                    {
+
+                        printf("Tu habilidad para saltarte las reglas te permiten safar el ejercicio\n");
+                        return 1;
+                    }
+                  else
+                    {
+
+                        printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
+                        printf("Dejas el ejercicio incompleto\n");
+                        return 0;
+                    }
 
               }
     }while(num>3 || num<1);
 
 }
-*/
+
 
 /// seleccion de personaje
 int seleccion(int i, int opciones, stImagen a[])
