@@ -276,6 +276,7 @@ int main()
     return 0;
 }
 /// funcion para moverse por los menus
+/// funcion para moverse por los menus
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a)
 {
     char tecla;
@@ -286,26 +287,38 @@ int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImage
 
     fflush(stdin);
     tecla = getch();  /// leemos la tecla, reproducimos sonido si esta activado
-    reproducirSonido (variableSonido);
+
 
     system("cls");
 
     if(tecla == 13)
     {
+        reproducirSonido (variableSonido);
         num = funcSiguiente(i);     /// si preciona enter pasamos a la siguiente mandando el valor actual de i
 
     }
     else
     {
-        if(tecla == teclaAbajo && i<opciones-1)       /// dependiendo de que tecla se use le damos el valor a i
+        if(tecla == teclaAbajo && i<opciones-1)   /// dependiendo de que tecla se use le damos el valor a i
+        {
+            reproducirSonido (variableSonido);
             i++;
+        }
         else if(tecla == teclaAbajo && i>opciones-2)
+        {
+            reproducirSonido (variableSonido);
             i = 0;
+        }
         else if(tecla == teclaArriba && i>0)
+         {
+            reproducirSonido (variableSonido);
             i--;
+         }
         else if(tecla == teclaArriba && i<1)
+          {
+            reproducirSonido (variableSonido);
             i = opciones-1;
-
+          }
 
         num = moverse(i, opciones, funcActual, funcSiguiente, a);   /// llamada recursiva a la funcion
     }
