@@ -40,53 +40,62 @@ stImagen nombreJuego, imagenVacia;
 int variableSonido = 1;
 
 ///PROTOTIPADO
-void cargaImagenes (char archivo[],stImagen imagen[]);
-///Menu Principal
+void cargaImagenes(char archivo[], stImagen imagen[]);
+
+///CASE 0: Menu
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a);
 void mensajeInicial(int i);
 int opcionesInicio(int i);
-
 void reproducirSonido(int i);
 void menuOpciones(int i);
-
-void verImagen (stImagen imagen);
-
+void verImagen(stImagen imagen);
 void mensajeOpciones(int i);
-void menuOpciones(int i);
 void cambiarSonido();
+
+/// CASE 1: Nueva Partida
 void textoInicial(stImagen imagenes[]);
-
-
-
-void introMate (stImagen imagen);
-
 int seleccion(int i, int opciones, stImagen a[]);
-stpersonaje fotopj (stImagen imagen);
+stpersonaje fotopj(stImagen imagen);
+stpersonaje funcionhabilidades();
+void Verfunciones(stpersonaje a);
+void verImagenPJ(stpersonaje imagen);
 
-
-void guardarPartida(char archivo[], stpersonaje a);
+/// CASE 2: CARGAR Partida
 stpersonaje cargarPartida(char archivo[]);
 void imagenCargaPartida(stpersonaje pj);
 int menuCargaPartida(stpersonaje pj, int i);
 
-///makano
-int resultado (stprofesor p [],stpersonaje a);
-int Pregunta1 (stpersonaje a, stprofesor p[]);
-int pregunta2 (stpersonaje a, stprofesor p []);
-int pregunta3 (stpersonaje a, stprofesor p []);
-int pregunta4 (stpersonaje a, stprofesor p []);
-void HabilRespuesta (stpersonaje a);
+/// CASE 3: Main Entrada
+//int menuCargaPartida(stpersonaje pj, int i);
 
-///cantuccici
-int ProfesoraCantuccini (stprofesor pp[], stpersonaje a);
-int preguntaOrga1 (stprofesor pp[], stpersonaje a);
-int preguntaOrga2 ( stpersonaje a);
-int preguntaOrga3 ( stpersonaje a);
-int preguntaOrga4 (stpersonaje a);
+/// CASE 4: AYSO Professor (Makano)
+int resultado(stprofesor p[], stpersonaje a);
+int Pregunta1(stpersonaje a, stprofesor p[]);
+int pregunta2(stpersonaje a, stprofesor p[]);
+int pregunta3(stpersonaje a, stprofesor p[]);
+int pregunta4(stpersonaje a, stprofesor p[]);
+void HabilRespuesta(stpersonaje a);
 
-/// Funcion cargar personaje
-stpersonaje funcionhabilidades ();
-void Verfunciones (stpersonaje a);
+/// CASE 5: Empresarial (Cantuccini)
+int ProfesoraCantuccini(stprofesor pp[], stpersonaje a);
+int preguntaOrga1(stprofesor pp[], stpersonaje a);
+int preguntaOrga2(stpersonaje a);
+int preguntaOrga3(stpersonaje a);
+int preguntaOrga4(stpersonaje a);
+
+/// CASE 6: Matematica ( Rosas )
+void introMate(stImagen imagen);
+int EjercicioMate1(stImagen imagen);
+int EjercicioMate2(stImagen imagen);
+int EjercicioMate3(stImagen imagen, stpersonaje *Personaje1);
+
+/// CASE 7: Programacion Beretcher 
+
+/// CASE 8: Guardar Partida
+void guardarPartida(char archivo[], stpersonaje a);
+
+///CASE 9:---------------------
+//Fin del juego
 
 
 int main()
