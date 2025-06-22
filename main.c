@@ -159,7 +159,7 @@ int main()
         switch(menu)
         {
         case 0:
-
+        }
             menu = moverse(0, 4, mensajeInicial, opcionesInicio, nombreJuego);
             break;
 
