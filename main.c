@@ -40,16 +40,24 @@ stImagen nombreJuego, imagenVacia;
 int variableSonido = 1;
 
 ///PROTOTIPADO
+void cargaImagenes (char archivo[],stImagen imagen[]);
+///Menu Principal
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a);
 void mensajeInicial(int i);
-void cargaImagenes (char archivo[],stImagen imagen[]);
-void verImagen (stImagen imagen);
 int opcionesInicio(int i);
+
+void reproducirSonido(int i);
+void menuOpciones(int i);
+
+void verImagen (stImagen imagen);
+
 void mensajeOpciones(int i);
 void menuOpciones(int i);
-void reproducirSonido(int i);
 void cambiarSonido();
 void textoInicial(stImagen imagenes[]);
+
+
+
 void introMate (stImagen imagen);
 
 int seleccion(int i, int opciones, stImagen a[]);
@@ -94,6 +102,7 @@ int main()
     int pj;
     int cargaExitosa;
 
+    ///Carga de Archivo de Imagenes
     cargaImagenes(imagenesPepo, arreglo);
     nombreJuego = arreglo[0];
 
@@ -105,7 +114,7 @@ int main()
     stprofesor profeOrga [1];
     int puntosCantuccini=0;
 
-
+    ///Inicio de Juego
     do
     {
 
@@ -275,7 +284,24 @@ int main()
 
     return 0;
 }
-/// funcion para moverse por los menus
+
+///Funciones
+
+///Carga todas las imagenes del archivo,    Loadind Imagenes ....
+void cargaImagenes (char archivo[],stImagen imagen[])
+{
+    FILE* archi=fopen(archivo,"rb");
+    int i=0;
+    if(archi)
+    {
+        while(fread(&imagen[i++],sizeof(stImagen),1,archi)>0)
+        {
+        }
+        fclose(archi);
+    };
+}
+
+
 /// funcion para moverse por los menus
 int moverse(int i, int opciones, void funcActual(), int funcSiguiente(), stImagen a)
 {
@@ -358,20 +384,6 @@ void mensajeInicial(int i)
     }
 }
 
-///Carga todas las imagenes del archivo,    Loadind Imagenes ....
-void cargaImagenes (char archivo[],stImagen imagen[])
-{
-    FILE* archi=fopen(archivo,"rb");
-    int i=0;
-    if(archi)
-    {
-        while(fread(&imagen[i++],sizeof(stImagen),1,archi)>0)
-        {
-        }
-        fclose(archi);
-    };
-}
-
 /// Muestra 1 imagen
 void verImagen (stImagen imagen)
 {
@@ -380,14 +392,7 @@ void verImagen (stImagen imagen)
         printf("%s\n", imagen.dibujo[i]);
     }
 }
-/// muestra el dibujo del personaje pasado por parametro
-void verImagenPJ (stpersonaje imagen)
-{
-    for (int i = 0; i < imagen.fila; i++)
-    {
-        printf("%s\n", imagen.dibujo[i]);
-    }
-}
+
 /// funcion para retornar un valor dependiendo de donde se este ubicado con i , esto se usa para los case en el switch partiendo del menu principal
 int opcionesInicio(int i)
 {
@@ -515,6 +520,15 @@ void textoInicial(stImagen imagenes[])
     printf("Como nuevo universitario, cada decision, cada parcial, cada pequeño truco que descubras, moldeara tu camino.\n");
     printf("¿Seras el alumno ejemplar o el estratega astuto? Es hora de averiguarlo.\n");
     printf("La aventura comienza ahora!!!\n\n\n");
+}
+
+/// muestra el dibujo del personaje pasado por parametro
+void verImagenPJ (stpersonaje imagen)
+{
+    for (int i = 0; i < imagen.fila; i++)
+    {
+        printf("%s\n", imagen.dibujo[i]);
+    }
 }
 
 /// funcion inicio de enfrentamiento matematicas
