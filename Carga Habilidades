@@ -9,6 +9,7 @@ stpersonaje Habilidades ()
     printf("Vamos a cargar los puntos de habilidad!\n");
 
     do{
+        carga = 0;
         printf("\nTiene %i puntos:\n", puntos);
         printf("Ingrese los puntos para Inteligencia: %i + ", nuevo.inteligencia);
         fflush(stdin);
@@ -18,6 +19,7 @@ stpersonaje Habilidades ()
             nuevo.inteligencia += carga;
             puntos -= carga;
         }
+        carga = 0;
         printf("\nTiene %i puntos", puntos);
         printf("\nIngrese los puntos de carisma: %i + ", nuevo.habcarisma);
         fflush(stdin);
@@ -27,7 +29,7 @@ stpersonaje Habilidades ()
             nuevo.habcarisma += carga;
             puntos -= carga;
         }
-
+        carga = 0;
         printf("\nTiene %i puntos", puntos);
         printf("\nIngrese los puntos de cheat: %i + ", nuevo.habcheat);
         fflush(stdin);
