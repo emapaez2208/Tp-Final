@@ -166,7 +166,16 @@ int main()
         }
         case 1:
         {
+        case 0:
+            {
+            menu = moverse(0, 4, mensajeInicial, opcionesInicio, nombreJuego);
+            break;
+            }
+
+        case 1:
+        {
             textoInicial(arreglo);
+            usleep(1500000);
             system("pause");
             system("cls");
 
@@ -176,6 +185,7 @@ int main()
             verImagenPJ(Personaje1);
             printf("Ingrese su nombre: ");
             gets(&nombrePj);
+            printf("\n\n\n\n");
             strcpy(Personaje1.nombre,nombrePj);
             system("pause");
             system("cls");
@@ -183,6 +193,7 @@ int main()
             printf("\nHola %s\n",Personaje1.nombre);
             Verfunciones(Personaje1);
 
+            printf("\n\n\n\n");
             system("pause");
             system("cls");
 
