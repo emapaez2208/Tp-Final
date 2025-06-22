@@ -54,11 +54,11 @@ void cambiarSonido();
 
 /// CASE 1: Nueva Partida
 void textoInicial(stImagen imagenes[]);
-int seleccion(int i, int opciones, stImagen a[]);
-stpersonaje fotopj(stImagen imagen);
-stpersonaje funcionhabilidades();
-void Verfunciones(stpersonaje a);
+int seleccion(int i, int opciones,stpersonaje pj[] ,stImagen a[]);
+stpersonaje FotoStatsPj (stpersonaje b,stImagen imagen);
+void Verfunciones (stpersonaje a);
 void verImagenPJ(stpersonaje imagen);
+void verstats(stpersonaje b);
 
 /// CASE 2: CARGAR Partida
 stpersonaje cargarPartida(char archivo[]);
@@ -118,6 +118,14 @@ int main()
     int pj, num;
     int cargaExitosa;
 
+    ///Personajes pregenerados
+    stpersonaje StatsPj[4] = {
+        {5, 5, 5},
+        {8, 3, 5},
+        {5, 8, 3},
+        {3, 5, 8}
+    };
+
     /// Pila para desafio de programacion
     Pila pilaCargada;
     inicpila(&pilaCargada);
@@ -162,8 +170,9 @@ int main()
             system("pause");
             system("cls");
 
-            pj=4+seleccion(0,4,arreglo);
-            Personaje1=fotopj(arreglo[pj]);
+            pj=seleccion(0,4,StatsPj,arreglo);
+            printf("%i",pj);
+            Personaje1=FotoStatsPj(StatsPj[pj-2],arreglo[pj+4]);
 
             verImagenPJ(Personaje1);
             printf("Ingrese su nombre: ");
@@ -172,15 +181,8 @@ int main()
             system("pause");
             system("cls");
 
-            verImagenPJ(Personaje1);
-            printf("Hola %s\n",Personaje1.nombre);
-
-            printf("Ahora vamos a cargar tus habilidades!!!!\n");
-            /// German hice esto verificar si les gusta
-
-            Personaje1=funcionhabilidades();
+            printf("\nHola %s\n\n\n",Personaje1.nombre);
             Verfunciones(Personaje1);
-
 
             system("pause");
             system("cls");
@@ -587,12 +589,14 @@ void textoInicial(stImagen imagenes[])
 }
 
 /// Funcion Seleccionar PJ
-int seleccion(int i, int opciones, stImagen a[])
+int seleccion(int i, int opciones,stpersonaje b[], stImagen a[])
 {
     char tecla; int pj;
 
     printf("Elija su personaje: \n\n");
     verImagen(a[i+2]);
+    verstats(b[i]);
+
     fflush(stdin);
     tecla = getch();
     system("cls");
@@ -624,14 +628,14 @@ int seleccion(int i, int opciones, stImagen a[])
                 reproducirSonido (variableSonido);
                 i = opciones-1;
             }
-        pj=seleccion(i, opciones, a);                      ///Recursiva
+        pj=seleccion(i, opciones,b, a);                      ///Recursiva
 
     }
     return pj;
 }
-/// Funcion Pega Imagen seleccionada en STRUCT
+/// Funcion Pega Imagen y Stats seleccionada en STRUCT
 
-stpersonaje fotopj (stImagen imagen)
+stpersonaje FotoStatsPj (stpersonaje b,stImagen imagen)
 {
     stpersonaje personaje;
 
@@ -639,58 +643,19 @@ stpersonaje fotopj (stImagen imagen)
         {
         strcpy(personaje.dibujo[i],imagen.dibujo[i]);
         }
-
+    personaje.inteligencia=b.inteligencia;
+    personaje.habcarisma=b.habcarisma;
+    personaje.habcheat=b.habcheat;
     personaje.fila=imagen.fila;
+
     return personaje;
 }
-/// Funcion habilidades de PJ
-stpersonaje funcionhabilidades ()
-{
-    stpersonaje a;
-    int i;
-    int habilidad =0;
-    int puntos=0;
 
-    a.inteligencia=0;
-    a.habcarisma=0;
-    a.habcheat=0;
-
-    printf("\n ATENCION : si usted carga mas puntos de los permitidos volvera a empezar!!!");
-    printf("\nTiene 16 puntos en habilidad para cargar (inteligencia,carisma,cheat).Elija bien su estrategia , se puede poner dificil! \n ");
-        do{
-        habilidad=16;
-        printf("\n             Inteligencia :  ");
-        scanf("%i",&a.inteligencia);
-        habilidad=habilidad-a.inteligencia;
-        //system("cls");
-        if(habilidad>0)
-        {
-
-            printf("\n Le quedan %i  puntos\n",habilidad);
-            printf("\n             Carisma :  ");
-            scanf ("%i",&a.habcarisma);
-
-            habilidad=habilidad-a.habcarisma;
-            // system("cls");
-        }
-        if(habilidad>0)
-        {
-            a.habcheat=0;
-            printf("\n Le quedan %i  puntos\n",habilidad);
-            printf("\n               Cheat ");
-            scanf("%i",&a.habcheat);
-            habilidad=habilidad-a.habcheat;
-            //system("cls");
-        }
-    }
-    while(habilidad<0);
-
-return a;
-}
 /// VER PJ TERMINADO
 void Verfunciones (stpersonaje a)
 {
         puts("\033[34m \n=======================================");
+        verImagenPJ(a);
         printf("\nSus Habilidades son:");
         printf("\n                   Inteligencia :  %i",a.inteligencia);
         printf("\n                        Carisma :  %i",a.habcarisma);
@@ -706,6 +671,14 @@ void verImagenPJ (stpersonaje imagen)
     {
         printf("%s\n", imagen.dibujo[i]);
     }
+}
+
+///Funcion para mostrar stats precargados
+void verstats(stpersonaje b)
+{
+    printf("Inteligencia : %i\n",b.inteligencia);
+    printf("Carisma      : %i\n",b.habcarisma);
+    printf("Cheats       : %i\n",b.habcheat);
 }
 
 ///--------------------------------------------CASE 2---------------------------
