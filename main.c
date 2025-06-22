@@ -174,12 +174,13 @@ int main()
             pj=seleccion(0,4,StatsPj,arreglo);
             Personaje1=FotoStatsPj(StatsPj[pj-2],arreglo[pj+4]);
 
+            do{
+            system("cls");
             verImagenPJ(Personaje1);
             printf("Ingrese su nombre: ");
             gets(&nombrePj);
-            printf("\n\n\n\n");
+            }while(strlen(nombrePj)==0);
             strcpy(Personaje1.nombre,nombrePj);
-            system("pause");
             system("cls");
 
             printf("\nHola %s\n",Personaje1.nombre);
@@ -190,7 +191,6 @@ int main()
             system("cls");
 
             menu=3;
-
             break;
         }
         case 2:
