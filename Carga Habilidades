@@ -1,0 +1,44 @@
+stpersonaje Habilidades ()
+{
+    stpersonaje nuevo;
+    int puntos = 16, carga;
+    nuevo.inteligencia = 0;
+    nuevo.habcarisma = 0;
+    nuevo.habcheat = 0;
+
+    printf("Vamos a cargar los puntos de habilidad!\n");
+
+    do{
+        printf("\nTiene %i puntos:\n", puntos);
+        printf("Ingrese los puntos para Inteligencia: %i + ", nuevo.inteligencia);
+        fflush(stdin);
+        scanf("%i", &carga);
+
+        if(carga <= puntos){
+            nuevo.inteligencia += carga;
+            puntos -= carga;
+        }
+        printf("\nTiene %i puntos", puntos);
+        printf("\nIngrese los puntos de carisma: %i + ", nuevo.habcarisma);
+        fflush(stdin);
+        scanf("%i", &carga);
+
+        if(carga <= puntos){
+            nuevo.habcarisma += carga;
+            puntos -= carga;
+        }
+
+        printf("\nTiene %i puntos", puntos);
+        printf("\nIngrese los puntos de cheat: %i + ", nuevo.habcheat);
+        fflush(stdin);
+        scanf("%i", &carga);
+
+        if(carga <= puntos){
+            nuevo.habcheat += carga;
+            puntos -= carga;
+        }
+        system("cls");
+    }while(puntos > 0);
+
+    return nuevo;
+}
