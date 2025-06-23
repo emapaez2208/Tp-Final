@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -1826,8 +1825,7 @@ int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
                 {
                     (*Personaje1).inteligencia=(*Personaje1).inteligencia-2;
                 }
-                system("pause");
-                system("cls");
+
                 return 2;
             }
             else
@@ -1836,8 +1834,6 @@ int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
                 printf("No lo sabes, por eso estabas nervioso, intenta y fallas\n");
                 printf("Aunque no resuelves, lo intentaste, +2 inteligencia\n");
                 (*Personaje1).inteligencia=(*Personaje1).inteligencia+2;
-                system("pause");
-                system("cls");
 
                 return 0;
             }
@@ -1879,28 +1875,28 @@ int EjercicioMate4 (stImagen imagen)
     int suma=0;
     verImagen(imagen);
     printf("Completa la Tabla de verdad\n");
-    printf("Solo 1 o 0 si no te sales de mi clase\n");
+    printf("Solo numeros si no te sales de mi clase\n");
     printf("\n\n");
     printf(" P |  Q \n");
-    printf(" 1 V  1   = ");
+    printf("\n 1 V  1   = ");
     scanf("%i",&valor);
     if(valor==1)
     {
         suma++;
     };
-    printf(" 1 V  0   = ");
+    printf("\n 1 V  0   = ");
     scanf("%i",&valor);
     if(valor==1)
     {
         suma++;
     };
-    printf(" 0 V  1   = ");
+    printf("\n 0 V  1   = ");
     scanf("%i",&valor);
     if(valor==1)
     {
         suma++;
     };
-    printf(" 0 V  0   = ");
+    printf("\n 0 V  0   = ");
     scanf("%i",&valor);
     if(valor==0)
     {
@@ -2280,6 +2276,5 @@ void guardarPartida(char archivo[], stpersonaje a)
 }
 
 ///------------------------------------------------- CASE  9 -----------------------------------------
-
 
 //Fin del juego
