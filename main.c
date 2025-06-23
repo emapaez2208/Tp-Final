@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -69,11 +70,11 @@ int menuCargaPartida(stpersonaje pj, int i);
 //int menuCargaPartida(stpersonaje pj, int i);
 
 /// CASE 4: AYSO Professor (Makano)
-int resultado(stprofesor p[], stpersonaje a);
-int Pregunta1(stpersonaje a, stprofesor p[]);
-int pregunta2(stpersonaje a, stprofesor p[]);
-int pregunta3(stpersonaje a, stprofesor p[]);
-int pregunta4(stpersonaje a, stprofesor p[]);
+int resultado(stprofesor p[], stpersonaje a , stImagen imagen);
+int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen);
+int pregunta2(stpersonaje a, stprofesor p[], stImagen imagen);
+int pregunta3(stpersonaje a, stprofesor p[],stImagen imagen);
+int pregunta4(stpersonaje a, stprofesor p[],stImagen imagen);
 void HabilRespuesta(stpersonaje a);
 
 /// CASE 5: Empresarial (Cantuccini)
@@ -235,7 +236,7 @@ int main()
                 printf("\n \033[33m   Ya has aprobado esta materia,con mas del 50%%!!! anda a descansar! \n       Valla por mas y gana el juego.\033[0m");
 
             }else{
-            puntosMakano=resultado( profemakano,Personaje1);
+            puntosMakano=resultado( profemakano,Personaje1,arreglo[12]);
             printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas\n\n",puntosMakano);
 
                 if(puntosMakano>1)
@@ -810,7 +811,7 @@ int menuCargaPartida(stpersonaje pj, int i)
 
 ///------------------------------------------CASE 4-----------------------------------
 
-int resultado (stprofesor p [],stpersonaje a)
+int resultado (stprofesor p [],stpersonaje a , stImagen imagen)
 {
     int respuesta=0; int respuesta2=0;
     int respuesta3=0; int respuesta4=0;
@@ -888,25 +889,25 @@ int resultado (stprofesor p [],stpersonaje a)
         printf("\n\n Pasaste la prueba ahora viene la primer pregunta,ATENCION!!!");
         system("pause");
         system("cls");
-        respuesta = Pregunta1(a,p);
+        respuesta = Pregunta1(a,p,imagen);
 
         /// Pregunta 2
         printf("\n\n siguiete pregunta...\n");
         system("pause");
         system("cls");
-        respuesta2=pregunta2(a,p);
+        respuesta2=pregunta2(a,p,imagen);
 
         /// Pregunta 3
         printf("\n\n siguiete pregunta...\n");
         system("pause");
         system("cls");
-        respuesta3=pregunta3(a,p);
+        respuesta3=pregunta3(a,p,imagen);
 
         /// Pregunta 4
         printf("\n\n siguiete pregunta\n...");
         system("pause");
         system("cls");
-        respuesta4=pregunta4(a,p);
+        respuesta4=pregunta4(a,p,imagen);
 
         total=respuesta+respuesta2+respuesta3+respuesta4;
 
@@ -915,7 +916,7 @@ int resultado (stprofesor p [],stpersonaje a)
 }
 
 ///Funcion pregunta 1
-int Pregunta1 (stpersonaje a, stprofesor p[])
+int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
 {
     int i=0;  int ii=0;
     srand(time(NULL));
@@ -927,7 +928,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
     int resultado=3;
     char opcion ='v';
 
-
+    verImagen(imagen);
     printf("\n\n\n\033[32m Pregunta 1:");
     printf("\n El interbloque se producecuando vaarios procesos quieren acceder al mismo recurso y el semaforo no se lo permite ");
     printf("\n Verdadero = [v]");
@@ -1042,7 +1043,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
 }
 
 ///Funcion pregunta 2
-int pregunta2 (stpersonaje a, stprofesor p [])
+int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
 {
     int i=0;  int ii=0;
     srand(time(NULL));
@@ -1052,8 +1053,8 @@ int pregunta2 (stpersonaje a, stprofesor p [])
     char mmm='n';
     int resultado=3;
     char opcion ='v';
-
-    printf("\n\n\n\033[32m Pregunta 2:");
+    verImagen(imagen);
+    printf("\n\033[32m Pregunta 2:");
     printf("\n Un semaforo evita que un proceso realice una espera activa en la memoria de disco mientras llega su turno de ejecucion. ");
     printf("\n Verdadero = [v]");
     printf("\n     Falso = [f]......: \033[0m");
@@ -1160,7 +1161,7 @@ int pregunta2 (stpersonaje a, stprofesor p [])
     return respuesta;
 }
 ///Funcion pregunta3
-int pregunta3 (stpersonaje a, stprofesor p [])
+int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
 {
     int i=0; int ii=0;
     srand(time(NULL));
@@ -1170,7 +1171,8 @@ int pregunta3 (stpersonaje a, stprofesor p [])
     char mmm='n';
     int resultado=3;
     char letra='a';
-    printf("\n\n\n\033[32m Pregunta 3:");
+    verImagen(imagen);
+    printf("\n\033[32m Pregunta 3:");
     printf("\n Elegir la apcion correcta ");
     printf("\n  Un proceso que ejecuta un SemWait con valor 2 :");
     printf("\n      Se envia a LISTOS :......a");
@@ -1280,7 +1282,7 @@ int pregunta3 (stpersonaje a, stprofesor p [])
 }
 
 ///Funcion pregunta 4
-int pregunta4 (stpersonaje a, stprofesor p [])
+int pregunta4 (stpersonaje a, stprofesor p [] , stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -1293,7 +1295,8 @@ int pregunta4 (stpersonaje a, stprofesor p [])
 
     int resultado=3;
     char letra='a';
-    printf("\n\n\n\033[32m Pregunta 4 y ultima:");
+    verImagen(imagen);
+    printf("\n\033[32m Pregunta 4 y ultima:");
     printf("\n Elegir la apcion correcta ");
     printf("\n Dado el valor del semaforo con contador = -1 puedo afirmar que :  ");
     printf("\n Que hay un proceso bloqueado:...........a");
@@ -2248,4 +2251,3 @@ void guardarPartida(char archivo[], stpersonaje a)
 
 
 //Fin del juego
-
