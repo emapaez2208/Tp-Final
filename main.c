@@ -158,7 +158,6 @@ int main()
     ///Inicio de Juego
     do
     {
-
         switch(menu)
         {
         case 0:
