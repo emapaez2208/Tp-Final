@@ -1755,83 +1755,46 @@ int EjercicioMate1(stImagen imagen)
 }
 
 /// Funcion EJE 2 MATE
-int EjercicioMate2 (stImagen imagen)
+int EjercicioMate2(stImagen imagen)
 {
+    int suma = 0;
     int num;
+    int j;
+
+    srand(time(NULL));
 
     verImagen(imagen);
-    printf("Desafio coreano!! \nApreta continuar solo si estas listo!!!\n");
+    printf("¡Desafio coreano!\nAprieta continuar solo si estas listo!!!\n");
     system("pause");
     system("cls");
 
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("|  5  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
+    for (int i = 0; i < 5; i++)
+    {
+        j = rand() % 9 + 1;
+
+        verImagen(imagen);
+        printf(" _____ \n");
+        printf("|     |\n");
+        printf("| +%i  |\n", j);
+        printf("|_____|\n");
+        usleep(900000);
+        system("cls");
+        system("cls");
+        system("cls");
+        suma = suma + j;
+    }
 
     verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| +6  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
+    printf("Ingrese el resultado: ");
+    scanf("%i", &num);
 
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| +9  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
-
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| -2  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
-
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| -4  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
-
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| +3  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
-
-    verImagen(imagen);
-    printf(" _____ \n");
-    printf("|     |\n");
-    printf("| +6  |\n");
-    printf("|_____|\n");
-    usleep(700000);
-    system("cls");
-
-    verImagen(imagen);
-    printf("Ingrese resultado: ");
-    fflush(stdin);
-    scanf("%i",&num);
-
-    if(num==23)
+    if (num == suma)
     {
         return 2;
     }
-
     return 0;
 }
+
 
 ///Funcion EJE 3 MATE
 int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
