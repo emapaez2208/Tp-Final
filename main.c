@@ -1,4 +1,5 @@
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -78,11 +79,11 @@ int pregunta4(stpersonaje a, stprofesor p[],stImagen imagen);
 void HabilRespuesta(stpersonaje a);
 
 /// CASE 5: Empresarial (Cantuccini)
-int ProfesoraCantuccini(stprofesor pp[], stpersonaje a);
-int preguntaOrga1(stprofesor pp[], stpersonaje a);
-int preguntaOrga2(stpersonaje a);
-int preguntaOrga3(stpersonaje a);
-int preguntaOrga4(stpersonaje a);
+int ProfesoraCantuccini(stprofesor pp[], stpersonaje a , stImagen imagen);
+int preguntaOrga1(stprofesor pp[], stpersonaje a, stImagen imagen);
+int preguntaOrga2(stpersonaje a, stImagen imagen);
+int preguntaOrga3(stpersonaje a, stImagen imagen);
+int preguntaOrga4(stpersonaje a, stImagen imagen);
 
 /// CASE 6: Matematica ( Rosas )
 void introMate(stImagen imagen);
@@ -261,7 +262,7 @@ int main()
              printf("\n\033[33m   Lo has hecho de lo mejor!!! Desafio ya superado , materia aprobada con mas del 50%%!!! \n    Vence al profesor de programacion para ganar el juego.\033[0m");
 
             }else{
-            puntosCantuccini=ProfesoraCantuccini( profeOrga,Personaje1);
+            puntosCantuccini=ProfesoraCantuccini( profeOrga,Personaje1,arreglo[14]);
             printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas",puntosCantuccini);
 
                 if(puntosCantuccini>1)
@@ -1418,7 +1419,7 @@ void HabilRespuesta (stpersonaje a)
 ///-----------------------------------------------CASE 5------------------------------------
 
 /// Organizacion empresarial (cantuccini );
-int ProfesoraCantuccini (stprofesor pp[], stpersonaje a)
+int ProfesoraCantuccini (stprofesor pp[], stpersonaje a , stImagen imagen)
 {
     int i=0;    int ii=0;
 
@@ -1439,19 +1440,19 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje a)
     system("pause");
     system("cls");
 
-    respuesta1=preguntaOrga1(pp,a);
+    respuesta1=preguntaOrga1(pp,a,imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta2=preguntaOrga2(a);
+    respuesta2=preguntaOrga2(a,imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta3=preguntaOrga3(a);
+    respuesta3=preguntaOrga3(a,imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta4=preguntaOrga4(a);
+    respuesta4=preguntaOrga4(a,imagen);
 
     total=respuesta1+respuesta2+respuesta3+respuesta4;
 
@@ -1459,7 +1460,7 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje a)
 }
 
 ///Funcion Eje Orga 1
-int preguntaOrga1 (stprofesor pp[], stpersonaje a)
+int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
 {
     srand(time(NULL));
     int dado=0;     int dadoprofe=0;
@@ -1468,8 +1469,8 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
     char mmm='n';
     int elegir=0;
     char palabra[20];
-
-    printf("\n\n \033[32m.................Complete la palabra que falta............\n ");
+    verImagen(imagen);
+    printf("\n \033[32m.................Complete la palabra que falta............\n ");
     printf("\nHablemos de una matriz FODA ...Que significa cada una de esas siglas ?");
     printf("\nF = fortaleza");
     printf("\nO = oportunidad");
@@ -1561,12 +1562,13 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a)
 }
 
 ///Funcion Eje Orga 2
-int preguntaOrga2 ( stpersonaje a)
+int preguntaOrga2 ( stpersonaje a , stImagen imagen)
 {
     int ii=0;
     int respuesta = 0;
     char palabra[20];
-    printf("\n\n \033[32m.................Complete la palabra que falta............\n ");
+    verImagen(imagen);
+    printf("\n \033[32m.................Complete la palabra que falta............\n ");
     printf("\n\n Cuando decimos que está ligada a características de alta COMPETITIVIDAD, magnificencia,\n productividad,GRAN IMPACTO, CALIDAD, efectividad.");
     printf("\n\nHablamos de una empresa moderna o tradicional?");
     printf("\n     Empresa (......)  ");
@@ -1589,11 +1591,12 @@ int preguntaOrga2 ( stpersonaje a)
 }
 
 ///Funcion Eje Orga 3
-int preguntaOrga3 ( stpersonaje a)
+int preguntaOrga3 ( stpersonaje a , stImagen imagen)
 {
     int i=0;
     int respuesta=0;
     char resultado='f';
+    verImagen(imagen);
     printf("\n\033[32m.................Conteste verdaderos (v) o falso (f)....................\n ");
     printf("\nHablando de las habilidades de una persona");
     printf("\nEl concepto de habilidades blandas hace referencia a todos los conocimientos teóricos o técnicos que posee un profesional,");
@@ -1617,12 +1620,12 @@ int preguntaOrga3 ( stpersonaje a)
 }
 
 ///Funcion Eje Orga 4
-int preguntaOrga4 (stpersonaje a)
+int preguntaOrga4 (stpersonaje a, stImagen imagen)
 {
     char letra='n';
     int opcion= 0;
     int respuesta=0;
-
+    verImagen(imagen);
     printf("\n..............OJO..LA..PROFESORA..ESTA..OBSEBANDO................\n\n ");
     printf("\n\033[31m");
     printf("\n                      o  o o          o o  o                     ");
