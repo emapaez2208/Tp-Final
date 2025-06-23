@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -77,11 +78,11 @@ int pregunta4(stpersonaje *a, stprofesor p[],stImagen imagen);
 void HabilRespuesta(stpersonaje a);
 
 /// CASE 5: Empresarial (Cantuccini)
-int ProfesoraCantuccini(stprofesor pp[], stpersonaje a, stImagen imagen);
-int preguntaOrga1(stprofesor pp[], stpersonaje a, stImagen imagen);
-int preguntaOrga2(stpersonaje a, stImagen imagen);
-int preguntaOrga3(stpersonaje a, stImagen imagen);
-int preguntaOrga4(stpersonaje a, stImagen imagen);
+int ProfesoraCantuccini(stprofesor pp[], stpersonaje *a, stImagen imagen);
+int preguntaOrga1(stprofesor pp[], stpersonaje *a, stImagen imagen);
+int preguntaOrga2(stpersonaje *a, stImagen imagen);
+int preguntaOrga3(stpersonaje *a, stImagen imagen);
+int preguntaOrga4(stpersonaje *a, stImagen imagen);
 
 /// CASE 6: Matematica ( Rosas )
 void introMate(stImagen imagen);
@@ -264,7 +265,7 @@ int main()
             }
             else
             {
-                puntosCantuccini=ProfesoraCantuccini( profeOrga,Personaje1,arreglo[14]);
+                puntosCantuccini=ProfesoraCantuccini( profeOrga,&Personaje1,arreglo[14]);
                 printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas",puntosCantuccini);
 
                 if(puntosCantuccini>1)
@@ -848,9 +849,9 @@ int resultado (stprofesor p [],stpersonaje *a, stImagen imagen)
     int aula=0;
     int total=0;
 
-    p[i].antiCheat=0;
-    p[i].dificultadParcial=0;
-    p[i].Personalidad=0;
+    p[i].antiCheat=3;
+    p[i].dificultadParcial=3;
+    p[i].Personalidad=7;
 
     printf("\n\n .....................BIENVENIDOS..AL..AULA..DEL.PROFESOR..MAKANO..................\n\n");
 
@@ -1452,7 +1453,7 @@ void HabilRespuesta (stpersonaje a)
 ///-----------------------------------------------CASE 5------------------------------------
 
 /// Organizacion empresarial (cantuccini );
-int ProfesoraCantuccini (stprofesor pp[], stpersonaje a, stImagen imagen)
+int ProfesoraCantuccini (stprofesor pp[], stpersonaje *a, stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -1474,19 +1475,19 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje a, stImagen imagen)
     system("pause");
     system("cls");
 
-    respuesta1=preguntaOrga1(pp,a,imagen);
+    respuesta1=preguntaOrga1(pp,&(*a),imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta2=preguntaOrga2(a,imagen);
+    respuesta2=preguntaOrga2(&(*a),imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta3=preguntaOrga3(a,imagen);
+    respuesta3=preguntaOrga3(&(*a),imagen);
     puts("\n\nSiguiente pregunta...\n");
     system("pause");
     system("cls");
-    respuesta4=preguntaOrga4(a,imagen);
+    respuesta4=preguntaOrga4(&(*a),imagen);
 
     total=respuesta1+respuesta2+respuesta3+respuesta4;
 
@@ -1494,7 +1495,7 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje a, stImagen imagen)
 }
 
 ///Funcion Eje Orga 1
-int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
+int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
 {
     srand(time(NULL));
     int dado=0;
@@ -1525,7 +1526,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
 
     if(mmm=='s')
     {
-        HabilRespuesta (a);
+        HabilRespuesta ((*a));
 
         scanf("%i",&elegir);
         if(elegir==1)
@@ -1533,7 +1534,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
             printf("\n Inteligencia");
             dado=rand()%3;
             dadoprofe=rand()%10;
-            if( a.inteligencia+dado > pp[i].dificultadParcial + dadoprofe)
+            if( (*a).inteligencia+dado > pp[i].dificultadParcial + dadoprofe)
             {
                 printf("\n Me has mareado !!!!  Tu respuesta es correcta.");
                 respuesta=1;
@@ -1549,7 +1550,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
             printf("\n Carisma");
             dado=rand()%3;
             dadoprofe=rand()%10;
-            if( a.habcarisma+dado > pp[i].Personalidad + dadoprofe)
+            if( (*a).habcarisma+dado > pp[i].Personalidad + dadoprofe)
             {
                 printf("\n Me has confundio Tu respuesta es correcta!");
                 respuesta=1;
@@ -1565,10 +1566,12 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
             printf("\n Eligio Cheat");
             dado=rand()%3;
             dadoprofe=rand()%10;
-            if( a.habcheat+dado > pp[i].antiCheat + dadoprofe)
+            if( (*a).habcheat+dado > pp[i].antiCheat + dadoprofe)
             {
                 printf("\n MMMMM me distraje!!! Tu respuesta es correcta.");
+                printf("\n Te ganaste un puntos extra de cheat");
                 respuesta=1;
+                (*a).habcheat=(*a).habcheat + 1;
             }
             else
             {
@@ -1587,7 +1590,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
             printf("\n Su respuesta es correcta , Felicitaciones!!!");
             printf("\n Tome 1 puntos de carisma.");
             respuesta=1;
-            a.habcarisma=a.habcarisma+1;
+            (*a).habcarisma=(*a).habcarisma+1;
         }
         else
         {
@@ -1598,7 +1601,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
 }
 
 ///Funcion Eje Orga 2
-int preguntaOrga2 ( stpersonaje a, stImagen imagen)
+int preguntaOrga2 ( stpersonaje *a, stImagen imagen)
 {
     int ii=0;
     int respuesta = 0;
@@ -1616,7 +1619,7 @@ int preguntaOrga2 ( stpersonaje a, stImagen imagen)
     {
         printf("\n Respuesta correcta , segui asi!!");
         printf("\n Te ganaste 1 puntos de carisma.");
-        a.habcarisma=a.habcarisma+1;
+        (*a).habcarisma=(*a).habcarisma+1;
         respuesta=1;
     }
     else
@@ -1627,7 +1630,7 @@ int preguntaOrga2 ( stpersonaje a, stImagen imagen)
 }
 
 ///Funcion Eje Orga 3
-int preguntaOrga3 ( stpersonaje a, stImagen imagen)
+int preguntaOrga3 ( stpersonaje *a, stImagen imagen)
 {
     int i=0;
     int respuesta=0;
@@ -1656,7 +1659,7 @@ int preguntaOrga3 ( stpersonaje a, stImagen imagen)
 }
 
 ///Funcion Eje Orga 4
-int preguntaOrga4 (stpersonaje a, stImagen imagen)
+int preguntaOrga4 (stpersonaje *a, stImagen imagen)
 {
     char letra='n';
     int opcion= 0;
