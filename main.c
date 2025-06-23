@@ -262,7 +262,6 @@ int main()
         case 5:
         {
             verImagen(arreglo[14]);
-            printf("en lo de cantuccini\n");
             if(Personaje1.nivelOrga==1)
             {
                 printf("\n\033[33m   Lo has hecho de lo mejor!!! Desafio ya superado , materia aprobada con mas del 50%%!!! \n    Vence al profesor de programacion para ganar el juego.\033[0m");
@@ -292,9 +291,8 @@ int main()
             if (Personaje1.nivelMate==1)
             {
                 verImagen(arreglo[13]);
-                printf("    MUY BIEN YA APROBASTE LA MATERIA\n");
-                printf("    Ahora deja a Natashan descansar y vete!!!\n");
-                system("pause");
+                printf("  \033[33m  MUY BIEN YA APROBASTE LA MATERIA\n");
+                printf("    Ahora deja a Natashan descansar y vete!!!\033[m\n");
             }
             else
             {
