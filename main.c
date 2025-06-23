@@ -1880,26 +1880,6 @@ int EjercicioMate4 (stImagen imagen)
 }
 ///-------------------------------------------------- CASE 7 ---------------------------------------
 
-///-------------------------------------------------- CASE 8 ---------------------------------------
-
-///Funcion  guardar partida
-void guardarPartida(char archivo[], stpersonaje a)
-{
-    FILE* buffer = fopen(archivo, "wb");
-    int flag = 0;
-
-    if(buffer)
-    {
-        flag = fwrite(&a, sizeof(stpersonaje), 1, buffer);
-        fclose(buffer);
-    }
-    if(flag == 1)
-        printf("La partida fue guardada exitosamente!\n\n");
-    else
-        printf("No se pudo guardar la partida, intente nuevamente!\n\n");
-}
-
-///------------------------------------------------- CASE  9 -----------------------------------------
 int desafrioProgramacion1()
 {
     char ingreso[30];
@@ -2222,5 +2202,27 @@ int responderCheat()
 
     return 0;
 }
+
+///-------------------------------------------------- CASE 8 ---------------------------------------
+
+///Funcion  guardar partida
+void guardarPartida(char archivo[], stpersonaje a)
+{
+    FILE* buffer = fopen(archivo, "wb");
+    int flag = 0;
+
+    if(buffer)
+    {
+        flag = fwrite(&a, sizeof(stpersonaje), 1, buffer);
+        fclose(buffer);
+    }
+    if(flag == 1)
+        printf("La partida fue guardada exitosamente!\n\n");
+    else
+        printf("No se pudo guardar la partida, intente nuevamente!\n\n");
+}
+
+///------------------------------------------------- CASE  9 -----------------------------------------
+
 
 //Fin del juego
