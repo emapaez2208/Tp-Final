@@ -235,7 +235,6 @@ int main()
         case 4:
         {
             verImagen(arreglo[12]);
-            printf("en lo de makano\n");
             if(Personaje1.nivelAYSO==1)
             {
                 printf("\n \033[33m   Ya has aprobado esta materia,con mas del 50%%!!! anda a descansar! \n       Valla por mas y gana el juego.\033[0m");
