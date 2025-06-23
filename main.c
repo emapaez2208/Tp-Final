@@ -1803,8 +1803,8 @@ int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
                   else
                     {
                         printf("Porque no estudiaste un poco mas?? \n");
-                        printf("No lo sabes por eso estas nervioso intenta y fallas\n");
-                        printf("Aun no resuelves lo intentaste +2 inteligencia\n");
+                        printf("No lo sabes, por eso estabas nervioso, intenta y fallas\n");
+                        printf("Aunque no resuelves, lo intentaste, +2 inteligencia\n");
                         (*Personaje1).inteligencia=(*Personaje1).inteligencia+2;
                         system("pause");
                         system("cls");
