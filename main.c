@@ -272,19 +272,21 @@ int main()
                 system("pause");system("cls");
 
                 puntos=0+EjercicioMate1(arreglo[13]);
-                system("pause");system("cls");
+                system("cls");
 
                 puntos=puntos+EjercicioMate2(arreglo[13]);
-                system("pause");system("cls");
+                system("cls");
 
                 puntos=puntos+EjercicioMate3 (arreglo[13],&Personaje1);
+                printf("\n\n");
                 system("pause");system("cls");
 
                 puntos=puntos+EjercicioMate4(arreglo[13]);
-                system("pause");system("cls");
+                system("cls");
 
                 if(puntos>5)
                 {
+                    verImagen(arreglo[13]);
                     printf("Puntaje es %i",puntos);
                     Personaje1.nivelMate=1;
                 }
@@ -294,6 +296,7 @@ int main()
                     printf("Fallaste vuelve cuando estudies mas\n");
                 }
             }
+            printf("\n\n");
             system("pause");
             menu=3;
             break;
@@ -1825,7 +1828,7 @@ int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
                         printf("Tu habilidad para saltarte las reglas te permiten safar el ejercicio\n");
                         printf("+1 a tu habilidad de cheat");
                         (*Personaje1).habcheat=(*Personaje1).habcheat+1;
-                        
+
                         return 1;
                     }
                         else
