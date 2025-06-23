@@ -230,9 +230,20 @@ int main()
         {
             verImagen(arreglo[12]);
             printf("en lo de makano\n");
+            if(Personaje1.nivelAYSO==1)
+            {
+                printf("\n \033[33m   Ya has aprobado esta materia,con mas del 50%%!!! anda a descansar! \n       Valla por mas y gana el juego.\033[0m");
 
+            }else{
             puntosMakano=resultado( profemakano,Personaje1);
             printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas\n\n",puntosMakano);
+
+                if(puntosMakano>1)
+                {
+                    Personaje1.nivelAYSO=1;
+                }
+
+            }
 
             printf("\n\ncompletaste el desafio\n");
             system("pause");
@@ -245,9 +256,18 @@ int main()
         {
             verImagen(arreglo[14]);
             printf("en lo de cantuccini\n");
+            if(Personaje1.nivelOrga==1){
+             printf("\n\033[33m   Lo has hecho de lo mejor!!! Desafio ya superado , materia aprobada con mas del 50%%!!! \n    Vence al profesor de programacion para ganar el juego.\033[0m");
+
+            }else{
             puntosCantuccini=ProfesoraCantuccini( profeOrga,Personaje1);
             printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas",puntosCantuccini);
 
+                if(puntosCantuccini>1)
+                {
+                   Personaje1.nivelOrga=1;
+                }
+            }
             printf("\n\ncompletaste el desafio\n");
             system("pause");
             system("cls");
@@ -310,11 +330,11 @@ int main()
             mostrar(&pilaCargada);
 
             num = desafrioProgramacion1();
-        
+
             if(num == 1){
                 printf("Felicidades ahora vamos por la segunda funcion:\n\n");
                 num = desafrioProgramacion2();
-        
+
                 if(num == 1){
                     printf("MUY BIEN LO LOGRASTE!!\n\n");
                     ordenarPilaSelec(&pilaCargada);
@@ -323,7 +343,7 @@ int main()
                     system("pause");
                     system("cls");
                     num = desafrioProgramacion3(Personaje1);
-        
+
                     if(num == 1){
                         printf("FELICIDADES! ACABAS DE VENCER EL JUEGO");
                         menu = 9;
@@ -906,6 +926,8 @@ int Pregunta1 (stpersonaje a, stprofesor p[])
 
     int resultado=3;
     char opcion ='v';
+
+
     printf("\n\n\n\033[32m Pregunta 1:");
     printf("\n El interbloque se producecuando vaarios procesos quieren acceder al mismo recurso y el semaforo no se lo permite ");
     printf("\n Verdadero = [v]");
@@ -2226,3 +2248,4 @@ void guardarPartida(char archivo[], stpersonaje a)
 
 
 //Fin del juego
+
