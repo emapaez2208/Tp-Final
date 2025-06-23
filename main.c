@@ -1574,7 +1574,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje a, stImagen imagen)
             else
             {
                 printf("\n Casi me enganias , F de falso");
-                printf("\n\n\033[41m su respuesta es incorrecta , SIGA ESTUDIANDO!!!033[0m ");
+                printf("\n\n\033[41m su respuesta es incorrecta , SIGA ESTUDIANDO!!!\033[0m ");
             }
         }
     }
