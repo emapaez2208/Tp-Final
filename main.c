@@ -982,7 +982,7 @@ int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen)
         {
             resultado=1;
         }
-        printf("\n Quieres cambiar la respuesta ?  s/n");
+        printf("\n Quieres cambiar la respuesta ?  s/..n");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1051,12 +1051,12 @@ int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen)
                 dadoprofe=rand()%10;
                 if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
+                    printf("\n Casi me enganias , F de falso!!");
                     printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
@@ -1109,7 +1109,7 @@ int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
         {
             resultado=0;
         }
-        printf("\n Quieres cambiar la respuesta ?   s/n");
+        printf("\n Quieres cambiar la respuesta ?   s/n..");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1145,7 +1145,7 @@ int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
+                    printf("\n Casi me enganias , F de falso!!");
                     printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
@@ -1161,7 +1161,7 @@ int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
+                    printf("\n Casi me enganias , F de falso!!");
                     printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
@@ -1172,7 +1172,7 @@ int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
                 dadoprofe=rand()%10;
                 if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
-                    printf("\n Me has confundio Tu respuesta es correcta");
+                    printf("\n Me has confundio Tu respuesta es correcta!");
                     respuesta=1;
                 }
                 else
@@ -1231,7 +1231,7 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
         {
             resultado=0;
         }
-        printf("\n mmmm esta pregunta es enganiosa!!! Quieres cambiar la respuesta ?  s/n   : ");
+        printf("\n mmmm esta pregunta es enganiosa!!! Quieres cambiar la respuesta ?  s/n ..: ");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1253,7 +1253,7 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
 
         while(mmm=='s')
         {
-            printf("\n Usa alguna de tus habilidades para marear al preofe ;) ");
+            printf("\n Usa alguna de tus habilidades para marear al preofe ;) ..");
             HabilRespuesta ((*a));
 
             scanf("%i",&elegir);
@@ -1269,8 +1269,8 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
                 }
                 else
                 {
-                    printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n Casi me enganias , F de falso!!");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!!\033[0m ");
                 }
             }
             if(elegir==2)
@@ -1286,7 +1286,7 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             if(elegir==3)
@@ -1302,14 +1302,14 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
                 else
                 {
                     printf("\n Casi me enganias , F de falso");
-                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS\033[0m ");
+                    printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!\033[0m ");
                 }
             }
             mmm='n';
         }
         if(resultado==2)
         {
-            printf("\n Perdiste , Tu respuesta es incorrecta");
+            printf("\n Perdiste , Tu respuesta es incorrecta.");
         }
     }
     return respuesta;
@@ -1354,7 +1354,7 @@ int pregunta4 (stpersonaje *a, stprofesor p [], stImagen imagen)
         {
             resultado=0;
         }
-        printf("\n Estas seguroooooo!!! O quieres cambiar la respuesta ?  s/n :  ");
+        printf("\n Estas seguroooooo!!! O quieres cambiar la respuesta ?  s/n ..:  ");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1514,10 +1514,10 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
     printf("\nA = amenaza");
     printf("\033[0m");
 
-    printf("\n Quiere usar algunas de tus habilidades para contestar las pregunta ? s/n... si es 'n' complete la palabra ");
+    printf("\n Quiere usar algunas de tus habilidades para contestar las pregunta ? s/n... si es 'n' complete la palabra!!! ");
     do
     {
-        printf("\n MARQUE ...( s/n )");
+        printf("\n MARQUE: ...( s/n )..");
         fflush(stdin);
         scanf(" %c",&mmm);
     }
@@ -1540,7 +1540,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
             }
             else
             {
-                printf("\n Casi me enganias , F de falso");
+                printf("\n Casi me enganias , F de falso!!!");
                 printf("\n\n\033[41m su respuesta es incorrecta , PENSE QUE SABIAS MAS!!!!\033[0m ");
             }
         }
@@ -1556,7 +1556,7 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
             }
             else
             {
-                printf("\n Casi me enganias , F de falso");
+                printf("\n Casi me enganias , F de falso.");
                 printf("\n\n\033[41m su respuesta es incorrecta , ESTUDIA MAS PARA LA PROXIMA !!!\033[0m ");
             }
         }
@@ -1574,14 +1574,14 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
             }
             else
             {
-                printf("\n Casi me enganias , F de falso");
+                printf("\n Casi me enganias , F de falso.");
                 printf("\n\n\033[41m su respuesta es incorrecta , SIGA ESTUDIANDO!!!\033[0m ");
             }
         }
     }
     else
     {
-        printf("\n Su respues es......");
+        printf("\n Su respues es(......)");
         fflush(stdin);
         gets(&palabra);
         if(strcmpi(palabra,"debilidad")==0)
@@ -1607,7 +1607,7 @@ int preguntaOrga2 ( stpersonaje *a, stImagen imagen)
     char palabra[20];
     verImagen(imagen);
     printf("\n \033[32m.................Complete la palabra que falta............\n ");
-    printf("\n\n Cuando decimos que está ligada a características de alta COMPETITIVIDAD, magnificencia,\n productividad,GRAN IMPACTO, CALIDAD, efectividad.");
+   printf("\n\n Cuando decimos que esta ligada a caracteristicas de alta COMPETITIVIDAD, magnificiencia ,\n productividad ,GRAN IMPACTO , CALIDAD, efectividad.");
     printf("\n\nHablamos de una empresa moderna o tradicional?");
     printf("\n     Empresa (......)  ");
 
@@ -1617,7 +1617,7 @@ int preguntaOrga2 ( stpersonaje *a, stImagen imagen)
     if(strcmpi(palabra, "moderna")==0)
     {
         printf("\n Respuesta correcta , segui asi!!");
-        printf("\n Te ganaste 1 puntos de carisma.");
+        printf("\n Te ganaste 1 puntos de CARISMA.");
         (*a).habcarisma=(*a).habcarisma+1;
         respuesta=1;
     }
@@ -1636,9 +1636,9 @@ int preguntaOrga3 ( stpersonaje *a, stImagen imagen)
     char resultado='f';
     verImagen(imagen);
     printf("\n\033[32m.................Conteste verdaderos (v) o falso (f)....................\n ");
-    printf("\nHablando de las habilidades de una persona");
-    printf("\nEl concepto de habilidades blandas hace referencia a todos los conocimientos teóricos o técnicos que posee un profesional,");
-    printf("\nindependiente de su área de trabajo. se relacionan con el nivel de conocimientos técnicos y preparación académica.");
+    printf("\nHablando de las habilidades de una persona.");
+    printf("\nEl concepto de habilidades blandas hace referencia a todos los conocimientos teoricos o tecnicos que posee un profecional,");
+    printf("\nindependiente de su area de trabajo. se relacionan con el nivel de conocimientos tecnicos y preparacion academica.");
     printf("\nVERDADERO......V");
     printf("\nFALSO..........F...:  ");
     printf("\033[0m");
@@ -1687,8 +1687,8 @@ int preguntaOrga4 (stpersonaje *a, stImagen imagen)
     {
         printf ("\n ...........................ESTRUCTURAS..ORGANIZACIONALES......................\n");
         printf("\n             Elije la opcion correcta! titulo 'Organizaciones Horizontales'   ");
-        printf("\n\n  Cuando se habla de:\n Estructura: Organización sin jerarquías formales. Se basa en redes de  \npersonas que se autoorganizan según el contexto y la necesidad. ");
-        printf("\n  Liderazgo: Flexible y emergente. No hay líderes fijos, sino que el liderazgo surge de manera  \norgánica dependiendo de la situación y las habilidades de cada persona.");
+        printf("\n\n  Cuando se habla de:\n Estructura: Organizacion sin jerarquias formales. se basa en redes de   \npersonas que se autoorganizan segun el contexto y necesidad. ");
+        printf("\n  Liderazgo: Flexible y emergente. No hay lideres fijos , sino que el liderazgo surge de manera  \norganica dependiendo de la situacion y las habilidades de cada persona.");
         printf("\033[0m");
         printf("\n\n   Se Dice que es una: ");
         printf("\n...HOLOCRACIA........1");
@@ -1707,7 +1707,7 @@ int preguntaOrga4 (stpersonaje *a, stImagen imagen)
         while(opcion!=1 && opcion !=2 && opcion !=3);
         if(opcion==2)
         {
-            printf("\n CORRECTOOOOOOOOOO , muy bien era una pregunta muy dificil !!! te voy a dar 2 puntos por no copiarte ");
+            printf("\n CORRECTOOOOOOOOOO , muy bien era una pregunta muy dificil !!! te voy a dar 2 puntos por no copiarte. ");
             respuesta=2;
         }
         else
