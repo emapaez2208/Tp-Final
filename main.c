@@ -238,7 +238,6 @@ int main()
             if(Personaje1.nivelAYSO==1)
             {
                 printf("\n \033[33m   Ya has aprobado esta materia,con mas del 50%%!!! anda a descansar! \n       Valla por mas y gana el juego.\033[0m");
-
             }
             else
             {
@@ -249,7 +248,6 @@ int main()
                 {
                     Personaje1.nivelAYSO=1;
                 }
-
             }
 
             printf("\n\ncompletaste el desafio\n");
@@ -265,7 +263,6 @@ int main()
             if(Personaje1.nivelOrga==1)
             {
                 printf("\n\033[33m   Lo has hecho de lo mejor!!! Desafio ya superado , materia aprobada con mas del 50%%!!! \n    Vence al profesor de programacion para ganar el juego.\033[0m");
-
             }
             else
             {
@@ -2304,7 +2301,9 @@ void guardarPartida(char archivo[], stpersonaje a)
 {
     FILE* buffer = fopen(archivo, "wb");
     int flag = 0;
-
+    
+    Verfunciones(a);
+    
     if(buffer)
     {
         flag = fwrite(&a, sizeof(stpersonaje), 1, buffer);
