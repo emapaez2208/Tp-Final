@@ -88,6 +88,7 @@ void introMate(stImagen imagen);
 int EjercicioMate1(stImagen imagen);
 int EjercicioMate2(stImagen imagen);
 int EjercicioMate3(stImagen imagen, stpersonaje *Personaje1);
+int EjercicioMate4(stImagen imagen);
 
 /// CASE 7: Programacion Beretcher
 int desafrioProgramacion1();
@@ -254,25 +255,46 @@ int main()
             menu=3;
             break;
         }
-        case 6:
+                case 6:
         {
             int puntos=0;
 
-            if (1)
+            if (Personaje1.nivelMate==1)
+            {
+                verImagen(arreglo[13]);
+                printf("    MUY BIEN YA APROBASTE LA MATERIA\n");
+                printf("    Ahora deja a Natashan descansar y vete!!!\n");
+                system("pause");
+            }
+            else
             {
                 introMate(arreglo[13]);
                 system("pause");system("cls");
 
-                EjercicioMate1(arreglo[13]);
+                puntos=0+EjercicioMate1(arreglo[13]);
                 system("pause");system("cls");
 
-                EjercicioMate2 (arreglo[13]);
+                puntos=puntos+EjercicioMate2(arreglo[13]);
                 system("pause");system("cls");
 
-                EjercicioMate3 (arreglo[13],&Personaje1);
+                puntos=puntos+EjercicioMate3 (arreglo[13],&Personaje1);
                 system("pause");system("cls");
+
+                puntos=puntos+EjercicioMate4(arreglo[13]);
+                system("pause");system("cls");
+
+                if(puntos>5)
+                {
+                    printf("Puntaje es %i",puntos);
+                    Personaje1.nivelMate=1;
+                }
+                else
+                {
+                    verImagen(arreglo[13]);
+                    printf("Fallaste vuelve cuando estudies mas\n");
+                }
             }
-
+            system("pause");
             menu=3;
             break;
         }
@@ -1657,10 +1679,8 @@ int EjercicioMate1(stImagen imagen)
 
     if (rta==2)
     {
-        printf("Rta correcta");
         return 1;
     }
-    printf("Rta incorrecta");
     return 0;
 }
 
@@ -1733,14 +1753,13 @@ int EjercicioMate2 (stImagen imagen)
     verImagen(imagen);
     printf("Ingrese resultado: ");
     fflush(stdin);
-    scanf("&i",&num);
-
-    system("cls");
+    scanf("%i",&num);
 
     if(num==23)
     {
         return 2;
     }
+
     return 0;
 }
 
@@ -1801,21 +1820,60 @@ int EjercicioMate3 (stImagen imagen,stpersonaje *Personaje1)
                         verImagen(imagen);
                         printf("Lo tenes a el crack de la matematica al lado y miras su hoja\n");
 
-                        if((*Personaje1).habcheat > 6)
+                        if((*Personaje1).habcheat > 4)
                     {
-
                         printf("Tu habilidad para saltarte las reglas te permiten safar el ejercicio\n");
+                        printf("+1 a tu habilidad de cheat");
+                        (*Personaje1).habcheat=(*Personaje1).habcheat+1;
+                        
                         return 1;
                     }
                         else
                     {
-
                         printf("Tu compa se da cuenta y tapa la hoja, suerte que no te delatara\n");
                         printf("Dejas el ejercicio incompleto\n");
                         return 0;
                     }
               }
     }while(num>3 || num<1);
+}
+
+
+int EjercicioMate4 (stImagen imagen)
+{
+    int valor ;
+    int suma=0;
+    verImagen(imagen);
+    printf("Completa la Tabla de verdad\n");
+    printf("Solo 1 o 0 si no te sales de mi clase\n");
+    printf("\n\n");
+    printf(" P |  Q \n");
+    printf(" 1 V  1   = ");
+    scanf("%i",&valor);
+     if(valor==1)
+    {
+        suma++;
+    };
+    printf(" 1 V  0   = ");
+    scanf("%i",&valor);
+     if(valor==1)
+    {
+        suma++;
+    };
+    printf(" 0 V  1   = ");
+    scanf("%i",&valor);
+     if(valor==1)
+    {
+        suma++;
+    };
+    printf(" 0 V  0   = ");
+    scanf("%i",&valor);
+    if(valor==0)
+    {
+        suma++;
+    };
+
+    return suma;
 }
 ///-------------------------------------------------- CASE 7 ---------------------------------------
 
