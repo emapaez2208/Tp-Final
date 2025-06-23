@@ -728,7 +728,7 @@ stpersonaje FotoStatsPj (stpersonaje b,stImagen imagen)
 /// VER PJ TERMINADO
 void Verfunciones (stpersonaje a)
 {
-    puts("\033[34m \n=======================================");
+    puts("\033[31m \n=======================================");
     verImagenPJ(a);
     printf("\nSus Habilidades son:");
     printf("\n                   Inteligencia :  %i",a.inteligencia);
