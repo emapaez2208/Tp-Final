@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -70,11 +69,11 @@ int menuCargaPartida(stpersonaje pj, int i);
 //int menuCargaPartida(stpersonaje pj, int i);
 
 /// CASE 4: AYSO Professor (Makano)
-int resultado(stprofesor p[], stpersonaje a, stImagen imagen);
-int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen);
-int pregunta2(stpersonaje a, stprofesor p[], stImagen imagen);
-int pregunta3(stpersonaje a, stprofesor p[],stImagen imagen);
-int pregunta4(stpersonaje a, stprofesor p[],stImagen imagen);
+int resultado(stprofesor p[], stpersonaje *a, stImagen imagen);
+int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen);
+int pregunta2(stpersonaje *a, stprofesor p[], stImagen imagen);
+int pregunta3(stpersonaje *a, stprofesor p[],stImagen imagen);
+int pregunta4(stpersonaje *a, stprofesor p[],stImagen imagen);
 void HabilRespuesta(stpersonaje a);
 
 /// CASE 5: Empresarial (Cantuccini)
@@ -240,7 +239,7 @@ int main()
             }
             else
             {
-                puntosMakano=resultado( profemakano,Personaje1,arreglo[12]);
+                puntosMakano=resultado( profemakano,&Personaje1,arreglo[12]);
                 printf("\n Usted a saco un puntaje de :: %i  Respuestas correctas\n\n",puntosMakano);
 
                 if(puntosMakano>1)
@@ -837,7 +836,7 @@ int menuCargaPartida(stpersonaje pj, int i)
 
 ///------------------------------------------CASE 4-----------------------------------
 
-int resultado (stprofesor p [],stpersonaje a, stImagen imagen)
+int resultado (stprofesor p [],stpersonaje *a, stImagen imagen)
 {
     int respuesta=0;
     int respuesta2=0;
@@ -871,42 +870,42 @@ int resultado (stprofesor p [],stpersonaje a, stImagen imagen)
     while(elegir!=1 && elegir !=2 && elegir!=3);
     if(elegir==1)
     {
-        if( p[i].Personalidad > a.habcarisma)
+        if( p[i].Personalidad > (*a).habcarisma)
         {
-            printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, a.habcarisma);
+            printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, (*a).habcarisma);
             printf("\n Duelo perdido vuelve mas tarde a intentarlo!!\n");
         }
         else
         {
-            printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, a.habcarisma);
+            printf("\n Personalidad Profesor: %i   vs   %i :Tu carisma\n",p[i].Personalidad, (*a).habcarisma);
             printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
         }
     }
     if(elegir==2)
     {
-        if( p[i].dificultadParcial > a.inteligencia)
+        if( p[i].dificultadParcial > (*a).inteligencia)
         {
-            printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, a.inteligencia);
+            printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, (*a).inteligencia);
             printf("\n Duelo perdido vuelve mas tarde a intentarlo\n");
         }
         else
         {
-            printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, a.inteligencia);
+            printf("\n Dificultad Profesor: %i   vs   %i :Tu Inteligencia\n",p[i].dificultadParcial, (*a).inteligencia);
             printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
         }
     }
     if(elegir==3)
     {
-        if (p[i].antiCheat > a.habcheat)
+        if (p[i].antiCheat > (*a).habcheat)
         {
-            printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, a.habcheat);
+            printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, (*a).habcheat);
             printf("\n Duelo perdido vuelve mas tarde a intentarlo\n");
         }
         else
         {
-            printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, a.habcheat);
+            printf("\n AntiCheat del Profesor: %i   vs   %i :Tu Habilidad para copiarte\n",p[i].antiCheat, (*a).habcheat);
             printf("\n Duelo Ganado , ahora se viene el parcial cuidado\n");
             aula=1;
         }
@@ -918,25 +917,25 @@ int resultado (stprofesor p [],stpersonaje a, stImagen imagen)
         printf("\n\n Pasaste la prueba ahora viene la primer pregunta,ATENCION!!!");
         system("pause");
         system("cls");
-        respuesta = Pregunta1(a,p,imagen);
+        respuesta = Pregunta1(&(*a),p,imagen);
 
         /// Pregunta 2
         printf("\n\n siguiete pregunta...\n");
         system("pause");
         system("cls");
-        respuesta2=pregunta2(a,p,imagen);
+        respuesta2=pregunta2(&(*a),p,imagen);
 
         /// Pregunta 3
         printf("\n\n siguiete pregunta...\n");
         system("pause");
         system("cls");
-        respuesta3=pregunta3(a,p,imagen);
+        respuesta3=pregunta3(&(*a),p,imagen);
 
         /// Pregunta 4
         printf("\n\n siguiete pregunta\n...");
         system("pause");
         system("cls");
-        respuesta4=pregunta4(a,p,imagen);
+        respuesta4=pregunta4(&(*a),p,imagen);
 
         total=respuesta+respuesta2+respuesta3+respuesta4;
 
@@ -945,7 +944,7 @@ int resultado (stprofesor p [],stpersonaje a, stImagen imagen)
 }
 
 ///Funcion pregunta 1
-int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
+int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -993,7 +992,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
     {
         printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!");
 
-        a.inteligencia=a.inteligencia + 1;
+        (*a).inteligencia=(*a).inteligencia + 1;
         respuesta=1;
     }
     else
@@ -1009,7 +1008,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
         while(mmm=='s')
         {
             printf("\n Usa algunas de tus habilidades para marear al preofe ;)... ");
-            HabilRespuesta (a);
+            HabilRespuesta ((*a));
             scanf("%i",&elegir);
 
             if(elegir==1)
@@ -1017,7 +1016,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
                 printf("\n Inteligencia");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
+                if( (*a).inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1033,7 +1032,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
                 printf("\n Carisma");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
+                if( (*a).habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
@@ -1050,7 +1049,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
                 printf("\n Eligio Cheat");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcheat+dado > p[i].antiCheat + dadoprofe)
+                if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1074,7 +1073,7 @@ int Pregunta1 (stpersonaje a, stprofesor p[],stImagen imagen)
 }
 
 ///Funcion pregunta 2
-int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
+int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -1118,7 +1117,7 @@ int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
     if(resultado==1)
     {
         printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!!");
-        a.inteligencia=a.inteligencia + 1;
+        (*a).inteligencia=(*a).inteligencia + 1;
         respuesta=1;
     }
     else
@@ -1132,14 +1131,14 @@ int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
         while(mmm=='s')
         {
             printf("\n Usa alguna de tus habilidades para marear al preofe ;).");
-            HabilRespuesta (a);
+            HabilRespuesta ((*a));
             scanf("%i",&elegir);
             if(elegir==1)
             {
                 printf("\n Inteligencia");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
+                if( (*a).inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
@@ -1155,7 +1154,7 @@ int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
                 printf("\n Carisma");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
+                if( (*a).habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
@@ -1171,7 +1170,7 @@ int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
                 printf("\n Eligio Cheat");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcheat+dado > p[i].antiCheat + dadoprofe)
+                if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1194,7 +1193,7 @@ int pregunta2 (stpersonaje a, stprofesor p [], stImagen imagen)
     return respuesta;
 }
 ///Funcion pregunta3
-int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
+int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -1240,7 +1239,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
     if(resultado==1)
     {
         printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!!");
-        a.inteligencia=a.inteligencia + 1;
+        (*a).inteligencia=(*a).inteligencia + 1;
         respuesta=1;
     }
     else
@@ -1255,7 +1254,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
         while(mmm=='s')
         {
             printf("\n Usa alguna de tus habilidades para marear al preofe ;) ");
-            HabilRespuesta (a);
+            HabilRespuesta ((*a));
 
             scanf("%i",&elegir);
             if(elegir==1)
@@ -1263,7 +1262,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
                 printf("\n Inteligencia");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
+                if( (*a).inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1279,7 +1278,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
                 printf("\n Carisma");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
+                if( (*a).habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1295,7 +1294,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
                 printf("\n Eligio Cheat");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcheat+dado > p[i].antiCheat + dadoprofe)
+                if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta");
                     respuesta=1;
@@ -1317,7 +1316,7 @@ int pregunta3 (stpersonaje a, stprofesor p [],stImagen imagen)
 }
 
 ///Funcion pregunta 4
-int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
+int pregunta4 (stpersonaje *a, stprofesor p [], stImagen imagen)
 {
     int i=0;
     int ii=0;
@@ -1363,7 +1362,7 @@ int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
     if(resultado==1)
     {
         printf("\n\n Su respuesta es correcta!!!! ,  A sumado un punto a su inteligencia felicitaciones!");
-        a.inteligencia=a.inteligencia + 1;
+        (*a).inteligencia=(*a).inteligencia + 1;
         respuesta=1;
     }
     else
@@ -1378,7 +1377,7 @@ int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
         while(mmm=='s')
         {
             printf("\n Usa alguna de tus habilidades para marear al preofe ;). ");
-            HabilRespuesta (a);
+            HabilRespuesta ((*a));
             scanf("%i",&elegir);
 
             if(elegir==1)
@@ -1386,7 +1385,7 @@ int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
                 printf("\n Inteligencia");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.inteligencia+dado > p[i].dificultadParcial + dadoprofe)
+                if( (*a).inteligencia+dado > p[i].dificultadParcial + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta!");
                     respuesta=1;
@@ -1402,7 +1401,7 @@ int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
                 printf("\n Carisma");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcarisma+dado > p[i].Personalidad + dadoprofe)
+                if( (*a).habcarisma+dado > p[i].Personalidad + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta!!");
                     respuesta=1;
@@ -1418,7 +1417,7 @@ int pregunta4 (stpersonaje a, stprofesor p [], stImagen imagen)
                 printf("\n Eligio Cheat");
                 dado=rand()%3;
                 dadoprofe=rand()%10;
-                if( a.habcheat+dado > p[i].antiCheat + dadoprofe)
+                if( (*a).habcheat+dado > p[i].antiCheat + dadoprofe)
                 {
                     printf("\n Me has confundio Tu respuesta es correcta.");
                     respuesta=1;
@@ -2300,9 +2299,9 @@ void guardarPartida(char archivo[], stpersonaje a)
 {
     FILE* buffer = fopen(archivo, "wb");
     int flag = 0;
-    
+
     Verfunciones(a);
-    
+
     if(buffer)
     {
         flag = fwrite(&a, sizeof(stpersonaje), 1, buffer);
@@ -2318,4 +2317,3 @@ void guardarPartida(char archivo[], stpersonaje a)
 
 
 //Fin del juego
-
