@@ -872,7 +872,6 @@ int resultado (stprofesor p [],stpersonaje *a, stImagen imagen)
     int respuesta3=0;
     int respuesta4=0;
     int i =0;
-    int ii=0;
     int elegir=0;
     int aula=0;
     int total=0;
