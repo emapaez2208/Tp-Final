@@ -333,7 +333,7 @@ int main()
             if(Personaje1.nivelProg==1)
             {
                 verImagen(arreglo[16]);
-                printf("\033[33m YA APROBASTE TODO NO, DEBERIAS SER TAN AMBISIOSO !!!\n\n");
+                printf("\033[33m YA APROBASTE TODO, NO DEBERIAS SER TAN AMBISIOSO !!!\n\n");
                 printf("\033[33m Si ves a mis ayudantes diles que vuelvan seguro estan mangueando chipa \033[0m\n\n");
 
                 menu=3;
