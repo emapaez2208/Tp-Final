@@ -1622,7 +1622,6 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
 ///Funcion Eje Orga 2
 int preguntaOrga2 ( stpersonaje *a, stImagen imagen)
 {
-    int ii=0;
     int respuesta = 0;
     char palabra[20];
     verImagen(imagen);
