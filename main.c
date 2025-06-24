@@ -1477,8 +1477,7 @@ void HabilRespuesta (stpersonaje a)
 int ProfesoraCantuccini (stprofesor pp[], stpersonaje *a, stImagen imagen)
 {
     int i=0;
-    int ii=0;
-
+    
     pp[i].Personalidad= 3;
     pp[i].antiCheat=8 ;
     pp[i].dificultadParcial= 5;
