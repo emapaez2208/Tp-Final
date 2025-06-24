@@ -203,14 +203,23 @@ int main()
         case 2:
         {
             Personaje1 = cargarPartida(archivoPartidas);
-            cargaExitosa = menuCargaPartida(Personaje1, 0);
 
-            if(cargaExitosa == 0)
-                menu = 3;
+            if(strlen(Personaje1.nombre)!=0)
+                {
+                    cargaExitosa = menuCargaPartida(Personaje1, 0);
+
+                    if(cargaExitosa == 0)
+                        menu = 3;
+                    else
+                        menu = 0;
+
+                    system("cls");
+                }
             else
-                menu = 0;
-
-            system("cls");
+                {
+                     menu=1;
+                     system("cls");
+                }
 
             break;
         }
@@ -1477,7 +1486,7 @@ void HabilRespuesta (stpersonaje a)
 int ProfesoraCantuccini (stprofesor pp[], stpersonaje *a, stImagen imagen)
 {
     int i=0;
-    
+
     pp[i].Personalidad= 3;
     pp[i].antiCheat=8 ;
     pp[i].dificultadParcial= 5;
