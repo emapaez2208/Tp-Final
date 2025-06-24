@@ -1221,7 +1221,6 @@ int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
 int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
 {
     int i=0;
-    int ii=0;
     int dado=0;
     int dadoprofe=0;
     int elegir=0;
