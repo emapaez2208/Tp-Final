@@ -23,6 +23,7 @@ typedef struct
     int nivelAYSO;              /// control de ganarle a los profes
     int nivelOrga;
     int nivelMate;
+    int nivelProg;
 
 } stpersonaje;
 
@@ -89,13 +90,14 @@ int EjercicioMate1(stImagen imagen);
 int EjercicioMate2(stImagen imagen);
 int EjercicioMate3(stImagen imagen, stpersonaje *Personaje1);
 int EjercicioMate4(stImagen imagen);
+int EjercicioMate5(stImagen imagen,stpersonaje *a);
 
 /// CASE 7: Programacion Beretcher
 int desafrioProgramacion1();
 int menorPila (Pila* dada);
 int desafrioProgramacion2();
 void ordenarPilaSelec (Pila* dada);
-int desafrioProgramacion3(stpersonaje pj);
+int desafrioProgramacion3(stpersonaje pj,stImagen imagen[]);
 int responderInteligencia();
 int responderCarisma(stpersonaje pj);
 int responderCheat();
@@ -181,14 +183,12 @@ int main()
                 verImagenPJ(Personaje1);
                 printf("Ingrese su nombre: ");
                 gets(&nombrePj);
-            }
-            while(strlen(nombrePj)==0);
+            }while(strlen(nombrePj)==0);
+
             strcpy(Personaje1.nombre,nombrePj);
             system("cls");
 
             printf("\nHola %s\n",Personaje1.nombre);
-
-            /// ACA FALTA FUNCION CARGA DE HABILIDADES
             Verfunciones(Personaje1);
 
             printf("\n\n\n\n");
@@ -208,9 +208,7 @@ int main()
             else
                 menu = 0;
 
-
             system("cls");
-
 
             break;
         }
@@ -224,6 +222,7 @@ int main()
                 printf("      4:SALA AYSO              7:Laboratorio\n      5:SALA Org Empresarial   8:Guardar\n      6:SALA Mate              0:Salir          ELEGIR :");
                 fflush(stdin);
                 scanf("%i",&menu);
+                reproducirSonido (variableSonido);
                 system("cls");
             }
             while( menu < 0 || (menu > 0 && menu < 4) || menu > 8 );
@@ -309,6 +308,9 @@ int main()
                 puntos=puntos+EjercicioMate4(arreglo[13]);
                 system("cls");
 
+                puntos=puntos+EjercicioMate5(arreglo[13],&Personaje1);
+                system("cls");
+
                 if(puntos>5)
                 {
                     verImagen(arreglo[13]);
@@ -328,8 +330,17 @@ int main()
         }
         case 7:
         {
+            if(Personaje1.nivelProg==1)
+            {
+                verImagen(arreglo[16]);
+                printf("\033[33m YA APROBASTE TODO NO, DEBERIAS SER TAN AMBISIOSO !!!\n\n");
+                printf("\033[33m Si ves a mis ayudantes diles que vuelvan seguro estan mangueando chipa \033[0m\n\n");
 
-            if(Personaje1.nivelAYSO==1 && Personaje1.nivelMate==1 && Personaje1.nivelOrga==1)
+                menu=3;
+
+            }
+
+            else if(Personaje1.nivelAYSO==1 && Personaje1.nivelMate==1 && Personaje1.nivelOrga==1)
             {
                 printf("en lo beretcher\n");
                 verImagen(arreglo[16]);
@@ -351,27 +362,32 @@ int main()
                         mostrar(&pilaCargada);
                         system("pause");
                         system("cls");
-                        num = desafrioProgramacion3(Personaje1);
-
+                        num = desafrioProgramacion3(Personaje1,arreglo);
+                        system("cls");
                         if(num == 1)
                         {
-                            printf("FELICIDADES! ACABAS DE VENCER EL JUEGO");
+                            verImagen(arreglo[16]);
+                            printf("FELICIDADES! ACABAS DE VENCER EL JUEGO\n\n");
+                            Personaje1.nivelProg=1;
                             menu = 9;
                         }
                         else
                         {
+                            verImagen(arreglo[16]);
                             printf("Fallaste vuelve a intentarlo!\n\n");
                             menu = 3;
                         }
                     }
                     else
                     {
+                        verImagen(arreglo[16]);
                         printf("Fallaste vuelve a intentarlo!\n\n");
                         menu = 3;
                     }
                 }
                 else
                 {
+                    verImagen(arreglo[16]);
                     printf("Fallaste vuelve a intentarlo!\n\n");
                     menu = 3;
                 }
@@ -400,7 +416,7 @@ int main()
             printf("Felicidades pasaste de etapa\n");
             system("pause");
             system("cls");
-            menu=11;
+            menu=3;
             break;
         }
         default:
@@ -559,14 +575,16 @@ void menuOpciones(int i)
     }
     else if(i==1)
     {
-        printf("Graficos:\n     Parpadear siempre: Activo\n\n");
+        verImagen(nombreJuego);
+        printf("                                     Graficos:\n     Parpadear siempre: Activo\n\n");
         system("pause");
         system("cls");
         moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
     }
     else if(i==2)
     {
-        printf("Idioma:\n       Espaninglish: siempre\n\n");
+        verImagen(nombreJuego);
+        printf("                                      Idioma:\n       Espaninglish: siempre\n\n");
         system("pause");
         system("cls");
         moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
@@ -627,6 +645,7 @@ void cambiarSonido()
     {
         if(variableSonido == 0)
         {
+            verImagen(nombreJuego);
             printf("\n\n\n\n                                            Sonido de tecla: Activado\n\n");
             tecla = getch();
             variableSonido = 1;
@@ -635,6 +654,7 @@ void cambiarSonido()
         }
         else
         {
+            verImagen(nombreJuego);
             printf("\n\n\n\n                                            Sonido de tecla: Desactivado\n\n");
             tecla = getch();
             reproducirSonido(variableSonido);
@@ -1905,6 +1925,52 @@ int EjercicioMate4 (stImagen imagen)
 
     return suma;
 }
+
+/// Funcion EJE 5 MATE
+int EjercicioMate5(stImagen imagen,stpersonaje *a)
+{
+    int suma = 0;
+    int num;
+    int j;
+
+    srand(time(NULL));
+
+    verImagen(imagen);
+    printf("¡Desafio coreano GODLEVEL !\nAprieta continuar solo si estas listo OJO SI FALLAS PIERDES PUNTOS!!!\n");
+    system("pause");
+    system("cls");
+
+    for (int i = 0; i < 7; i++)
+    {
+        j = rand() % 9 + 1;
+
+        verImagen(imagen);
+        printf(" _____ \n");
+        printf("|     |\n");
+        printf("| +%i  |\n", j);
+        printf("|_____|\n");
+        usleep(400000);
+        system("cls");
+        system("cls");
+        system("cls");
+        suma = suma + j;
+    }
+
+    verImagen(imagen);
+    printf("Ingrese el resultado: ");
+    scanf("%i", &num);
+
+    if (num == suma)
+    {
+        printf("Eres un genio pero tu intelecto se atrofio -2 al intelecto\n\n");
+        (*a).inteligencia=(*a).inteligencia-2;
+        system("pause");
+        return 1;
+    }
+    printf("Lo lamento reglas son reglas -1 al Examen\n\n");
+    system("pause");
+    return -1;
+}
 ///-------------------------------------------------- CASE 7 ---------------------------------------
 
 int desafrioProgramacion1()
@@ -2128,7 +2194,7 @@ void ordenarPilaSelec (Pila* dada)
     }
 }
 
-int desafrioProgramacion3(stpersonaje pj)
+int desafrioProgramacion3(stpersonaje pj,stImagen imagen[])
 {
     int flag = 0;
     int eleccion;
@@ -2137,6 +2203,7 @@ int desafrioProgramacion3(stpersonaje pj)
     system("pause");
     system("cls");
 
+    verImagen(imagen[11]);
     printf("ALTO... se te presenta Clarisa antes de entrar al laboratorio a rendir.. \nTe cuenta del parcial que tuvo antes, y te lo manda por wp..\nSeguramente te tomen el mismo parcial!\n\n");
     printf("Ahora si estas listo?\n\n");
     system("pause");
@@ -2144,7 +2211,8 @@ int desafrioProgramacion3(stpersonaje pj)
 
     do
     {
-        printf("Desea responder la pregunta con: \n\n\033[32m     1 = inteligencia        2 = carisma\n               3 = cheat\n\n");
+        verImagen(imagen[16]);
+        printf("Desea responder la pregunta con: \n\n\033[32m    1 = inteligencia    2 = carisma    3 = cheat (parcial de clarisa) \n\n");
         printf("        Elegir: ");
         fflush(stdin);
         scanf(" %i", &eleccion);
