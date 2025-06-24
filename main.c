@@ -40,6 +40,7 @@ const char teclaArriba = 'w', teclaAbajo = 's', teclaDerecha = 'd', teclaIzquier
 stImagen nombreJuego, imagenVacia;
 int variableSonido = 1;
 
+
 ///PROTOTIPADO
 void cargaImagenes(char archivo[], stImagen imagen[]);
 
@@ -57,7 +58,7 @@ void cambiarSonido();
 void textoInicial(stImagen imagenes[]);
 int seleccion(int i, int opciones,stpersonaje pj[],stImagen a[]);
 stpersonaje FotoStatsPj (stpersonaje b,stImagen imagen);
-void Verfunciones (stpersonaje a);
+void Verpersonajes (stpersonaje a);
 void verImagenPJ(stpersonaje imagen);
 void verstats(stpersonaje b);
 
@@ -120,6 +121,7 @@ int main()
     int menu = 0;
     int pj, num;
     int cargaExitosa;
+    srand(time(NULL));
 
     ///Personajes pregenerados
     stpersonaje StatsPj[4] =
@@ -189,7 +191,7 @@ int main()
             system("cls");
 
             printf("\nHola %s\n",Personaje1.nombre);
-            Verfunciones(Personaje1);
+            Verpersonajes(Personaje1);
 
             printf("\n\n\n\n");
             system("pause");
@@ -413,7 +415,14 @@ int main()
         }
         case 9:
         {
-            printf("Felicidades pasaste de etapa\n");
+
+            verImagen(nombreJuego);
+
+            printf("\n\n\n");
+            printf("\033[33m                                          CONTINUARA.....\n\n\n");
+            usleep(2000000);
+            printf("                                                             NOS VEMOS EN PROGRAMACION 2 !!!!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\033[0m");
+            usleep(9000000);
             system("pause");
             system("cls");
             menu=3;
@@ -506,31 +515,31 @@ void mensajeInicial(int i)
 {
     if(i==0)
     {
-        printf("                                                --> Nueva partida\n");
-        printf("                                                    Cargar partida\n");
-        printf("                                                    Opciones\n");
-        printf("                                                    Salir\n");
+        printf("                                                  --> Nueva partida\n");
+        printf("                                                      Cargar partida\n");
+        printf("                                                      Opciones\n");
+        printf("                                                      Salir\n");
     }
     else if(i==1)
     {
-        printf("                                                    Nueva partida\n");
-        printf("                                                --> Cargar partida\n");
-        printf("                                                    Opciones\n");
-        printf("                                                    Salir\n");
+        printf("                                                      Nueva partida\n");
+        printf("                                                  --> Cargar partida\n");
+        printf("                                                      Opciones\n");
+        printf("                                                      Salir\n");
     }
     else if(i==2)
     {
-        printf("                                                    Nueva partida\n");
-        printf("                                                    Cargar partida\n");
-        printf("                                                --> Opciones\n");
-        printf("                                                    Salir\n");
+        printf("                                                      Nueva partida\n");
+        printf("                                                      Cargar partida\n");
+        printf("                                                  --> Opciones\n");
+        printf("                                                      Salir\n");
     }
     else if(i==3)
     {
-        printf("                                                    Nueva partida\n");
-        printf("                                                    Cargar partida\n");
-        printf("                                                    Opciones\n");
-        printf("                                                --> Salir\n");
+        printf("                                                      Nueva partida\n");
+        printf("                                                      Cargar partida\n");
+        printf("                                                      Opciones\n");
+        printf("                                                  --> Salir\n");
     }
 }
 
@@ -576,7 +585,7 @@ void menuOpciones(int i)
     else if(i==1)
     {
         verImagen(nombreJuego);
-        printf("                                     Graficos:\n     Parpadear siempre: Activo\n\n");
+        printf("                                     Graficos:\n                                                         Parpadear siempre: Activo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         system("pause");
         system("cls");
         moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
@@ -584,7 +593,7 @@ void menuOpciones(int i)
     else if(i==2)
     {
         verImagen(nombreJuego);
-        printf("                                      Idioma:\n       Espaninglish: siempre\n\n");
+        printf("                                      Idioma:\n                                                          Espaninglish: siempre\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         system("pause");
         system("cls");
         moverse(i, 4, mensajeOpciones, menuOpciones, nombreJuego);
@@ -609,31 +618,31 @@ void mensajeOpciones(int i)
 {
     if(i==0)
     {
-        printf("                                                --> Sonido\n");
-        printf("                                                    Graficos\n");
-        printf("                                                    Idioma\n");
-        printf("                                                    Volver\n");
+        printf("                                                  --> Sonido\n");
+        printf("                                                      Graficos\n");
+        printf("                                                      Idioma\n");
+        printf("                                                      Volver\n");
     }
     else if(i==1)
     {
-        printf("                                                    Sonido\n");
-        printf("                                                --> Graficos\n");
-        printf("                                                    Idioma\n");
-        printf("                                                    Volver\n");
+        printf("                                                      Sonido\n");
+        printf("                                                  --> Graficos\n");
+        printf("                                                      Idioma\n");
+        printf("                                                      Volver\n");
     }
     else if(i==2)
     {
-        printf("                                                    Sonido\n");
-        printf("                                                    Graficos\n");
-        printf("                                                --> Idioma\n");
-        printf("                                                    Volver\n");
+        printf("                                                      Sonido\n");
+        printf("                                                      Graficos\n");
+        printf("                                                  --> Idioma\n");
+        printf("                                                      Volver\n");
     }
     else if(i==3)
     {
-        printf("                                                    Sonido\n");
-        printf("                                                    Graficos\n");
-        printf("                                                    Idioma\n");
-        printf("                                                --> Volver\n");
+        printf("                                                      Sonido\n");
+        printf("                                                      Graficos\n");
+        printf("                                                      Idioma\n");
+        printf("                                                  --> Volver\n");
     }
 }
 
@@ -745,7 +754,7 @@ stpersonaje FotoStatsPj (stpersonaje b,stImagen imagen)
 
 
 /// VER PJ TERMINADO
-void Verfunciones (stpersonaje a)
+void Verpersonajes (stpersonaje a)
 {
     puts("\033[31m \n=======================================");
     verImagenPJ(a);
@@ -881,13 +890,14 @@ int resultado (stprofesor p [],stpersonaje *a, stImagen imagen)
 
     do
     {
+        fflush(stdin);
         scanf("%i",&elegir);
         if(3<elegir || elegir<1)
         {
             printf("\n opcion incorrecta , vuelva a elegir .....:");
         }
-    }
-    while(elegir!=1 && elegir !=2 && elegir!=3);
+    }while(elegir<1 || elegir>3);
+
     if(elegir==1)
     {
         if( p[i].Personalidad > (*a).habcarisma)
@@ -967,8 +977,6 @@ int resultado (stprofesor p [],stpersonaje *a, stImagen imagen)
 int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen)
 {
     int i=0;
-    int ii=0;
-    srand(time(NULL));
     int dado=0;
     int dadoprofe=0;
     int elegir=0;
@@ -1096,8 +1104,6 @@ int Pregunta1 (stpersonaje *a, stprofesor p[],stImagen imagen)
 int pregunta2 (stpersonaje *a, stprofesor p [], stImagen imagen)
 {
     int i=0;
-    int ii=0;
-    srand(time(NULL));
     int dado=0;
     int dadoprofe=0;
     int elegir=0;
@@ -1217,7 +1223,6 @@ int pregunta3 (stpersonaje *a, stprofesor p [],stImagen imagen)
 {
     int i=0;
     int ii=0;
-    srand(time(NULL));
     int dado=0;
     int dadoprofe=0;
     int elegir=0;
@@ -1340,7 +1345,6 @@ int pregunta4 (stpersonaje *a, stprofesor p [], stImagen imagen)
 {
     int i=0;
     int ii=0;
-    srand(time(NULL));
     int dado=0;
     int dadoprofe=0;
     int elegir=0;
@@ -1374,7 +1378,7 @@ int pregunta4 (stpersonaje *a, stprofesor p [], stImagen imagen)
         {
             resultado=0;
         }
-        printf("\n Estas seguroooooo!!! O quieres cambiar la respuesta ?  s/n ..:  ");
+        printf("\n Estas seguroooooo!!! Quieres cambiar la respuesta ?  s/n ..:  ");
         scanf(" %c",&mmm);
     }
     while(mmm=='s');
@@ -1516,7 +1520,6 @@ int ProfesoraCantuccini (stprofesor pp[], stpersonaje *a, stImagen imagen)
 ///Funcion Eje Orga 1
 int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
 {
-    srand(time(NULL));
     int dado=0;
     int dadoprofe=0;
     int i=0;
@@ -1594,14 +1597,14 @@ int preguntaOrga1 (stprofesor pp[], stpersonaje *a, stImagen imagen)
             }
             else
             {
-                printf("\n Casi me enganias , F de falso.");
+                printf("\n Casi me enganias,aca hiciste trampa , F de falso.");
                 printf("\n\n\033[41m su respuesta es incorrecta , SIGA ESTUDIANDO!!!\033[0m ");
             }
         }
     }
     else
     {
-        printf("\n Su respues es(......)");
+        printf("\n Su respuesta es(......)");
         fflush(stdin);
         gets(&palabra);
         if(strcmpi(palabra,"debilidad")==0)
@@ -1757,8 +1760,8 @@ int EjercicioMate1(stImagen imagen)
     {
         verImagen(imagen);
         printf("\n");
-        printf("Resolver: x^2+0=4  el valor de x es \n");
-        printf("1:x=1;x=2  2:x=2;x=-2 3:x=-1;x=2\n\n");
+        printf("Resolver: x^2+0=4  el valor de x es \n\n");
+        printf(" 1:x=1;x=2    2:x=2;x=-2    3:x=-1;x=2\n\n");
         printf("RTA: ");
         fflush(stdin);
         scanf("%i",&rta);
@@ -1779,8 +1782,6 @@ int EjercicioMate2(stImagen imagen)
     int suma = 0;
     int num;
     int j;
-
-    srand(time(NULL));
 
     verImagen(imagen);
     printf("¡Desafio coreano!\nAprieta continuar solo si estas listo!!!\n");
@@ -1932,8 +1933,6 @@ int EjercicioMate5(stImagen imagen,stpersonaje *a)
     int suma = 0;
     int num;
     int j;
-
-    srand(time(NULL));
 
     verImagen(imagen);
     printf("¡Desafio coreano GODLEVEL !\nAprieta continuar solo si estas listo OJO SI FALLAS PIERDES PUNTOS!!!\n");
@@ -2330,7 +2329,7 @@ void guardarPartida(char archivo[], stpersonaje a)
     FILE* buffer = fopen(archivo, "wb");
     int flag = 0;
 
-    Verfunciones(a);
+    Verpersonajes(a);
 
     if(buffer)
     {
