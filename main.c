@@ -1650,7 +1650,6 @@ int preguntaOrga2 ( stpersonaje *a, stImagen imagen)
 ///Funcion Eje Orga 3
 int preguntaOrga3 ( stpersonaje *a, stImagen imagen)
 {
-    int i=0;
     int respuesta=0;
     char resultado='f';
     verImagen(imagen);
